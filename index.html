@@ -192,6 +192,8 @@ footer a{color:var(--dim)}
 const SUPABASE_URL='https://zlgkdobxvdfhdikbcyzr.supabase.co';
 const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsZ2tkb2J4dmRmaGRpa2JjeXpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUwOTY4NDMsImV4cCI6MjExMDY3Mjg0M30.asIyI-s_jwAWGNH0KrLzHwNlC0y4a6gTNmFOwx95zSY';
 const PAYPAL='leyproduce@gmail.com',PRICE='29.00',TERMS_VERSION='1';
+// los enlaces de «¿Olvidaste tu contraseña?» llegan aquí: pasan a la página de la nueva contraseña
+if(/type=recovery|error_description/.test(location.hash))location.replace('cambiar-clave.html'+location.hash);
 const db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:false}});
 const $=id=>document.getElementById(id);
 $('year').textContent=new Date().getFullYear();
