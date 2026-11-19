@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bravo Melody Composer · Ideas para tus beats en FL Studio</title>
+<meta name="description" content="Plugin VST3 que crea melodías, acordes, bajos y baterías en segundos: trap, reggaetón, drill, afrobeat, R&B, merengue y más. Pruébalo gratis 14 días.">
+<meta property="og:title" content="Bravo Melody Composer">
+<meta property="og:description" content="Melodías, acordes, bajo y batería para tus beats en segundos. 14 días gratis.">
+<meta property="og:image" content="compartir.jpg">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0b0a;--panel:#171311;--line:#2b2420;--cream:#efe6d6;--dim:#a99d8c;--red:#c8161f;--red2:#e5333b;--ok:#6fcf8a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font:16px/1.6 Inter,system-ui,sans-serif}
+a{color:var(--cream)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:0;z-index:5;background:rgba(13,11,10,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:14px;height:62px}
+header.top img{width:34px;height:34px}
+header.top b{font-family:"Bebas Neue",sans-serif;font-size:24px;letter-spacing:1px;font-weight:400}
+header.top nav{margin-left:auto;display:flex;gap:18px;align-items:center}
+header.top nav a{text-decoration:none;color:var(--dim);font-size:14px}
+header.top nav a:hover{color:var(--cream)}
+.btn{display:inline-block;border:0;border-radius:10px;padding:14px 24px;font:800 16px Inter,sans-serif;cursor:pointer;text-decoration:none;text-align:center;transition:transform .12s,background .12s}
+.btn:hover{transform:translateY(-1px)}
+.btn.red{background:var(--red);color:#fff}.btn.red:hover{background:var(--red2)}
+.btn.ghost{background:transparent;color:var(--cream);border:1px solid #4a3f37}
+.btn.small{padding:9px 16px;font-size:14px}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}
+.hero{padding:70px 0 40px;text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-40% -10% auto;height:120%;background:radial-gradient(closest-side,rgba(200,22,31,.22),transparent);pointer-events:none}
+.hero img{width:min(240px,55vw);filter:drop-shadow(0 18px 40px rgba(200,22,31,.25));position:relative}
+.hero h1{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(46px,9vw,92px);line-height:.95;margin:18px 0 10px;letter-spacing:2px;position:relative}
+.hero h1 span{color:var(--red2)}
+.hero p.lead{font-size:clamp(17px,2.4vw,21px);color:var(--dim);max-width:640px;margin:0 auto 28px;position:relative}
+.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.hero small{display:block;margin-top:14px;color:var(--dim);position:relative}
+section{padding:60px 0;border-top:1px solid var(--line)}
+h2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(34px,5vw,48px);letter-spacing:1px;margin:0 0 8px}
+.sub{color:var(--dim);margin:0 0 32px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--dim);font-size:15px}
+.card .ico{font-size:26px;margin-bottom:8px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tags span{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;color:var(--dim)}
+.steps{counter-reset:s;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.steps .card:before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;margin-bottom:10px}
+.price{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.pricebox{background:linear-gradient(180deg,#1e1715,#141110);border:1px solid #4a2a26;border-radius:18px;padding:30px;text-align:center}
+.pricebox .old{color:var(--dim);text-decoration:line-through;font-size:22px}
+.pricebox .now{font-family:"Bebas Neue",sans-serif;font-size:96px;line-height:1;color:#fff}
+.pricebox .now sup{font-size:40px;vertical-align:top;position:relative;top:14px}
+.pricebox .badge{display:inline-block;background:var(--red);color:#fff;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;margin-bottom:12px}
+.pricebox ul{list-style:none;padding:0;margin:18px 0 22px;text-align:left}
+.pricebox li{padding:6px 0 6px 28px;position:relative;color:var(--cream)}
+.pricebox li:before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:800}
+form .row{margin-bottom:12px;text-align:left}
+label{display:block;font-size:14px;color:var(--dim);margin-bottom:4px}
+input[type=text],input[type=email],input[type=password]{width:100%;background:#0f0c0b;border:1px solid #3a312b;border-radius:10px;padding:12px 14px;color:var(--cream);font:16px Inter,sans-serif}
+input:focus{outline:2px solid var(--red);outline-offset:1px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--dim);text-align:left}
+.check input{margin-top:4px;width:18px;height:18px;accent-color:var(--red);flex:none}
+.msg{margin-top:12px;font-size:15px;min-height:1px}
+.msg.bad{color:#ff7b7b}.msg.ok{color:var(--ok)}
+.done{display:none;text-align:left}
+.done h3{margin-top:0}
+.done ol{padding-left:20px;color:var(--dim)}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:600}
+.faq p{color:var(--dim);margin:10px 0 0}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--dim)}
+.paynote{font-size:13px;color:var(--dim);margin-top:10px}
+@media (max-width:620px){header.top nav a.hide{display:none}.hero{padding-top:44px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <img src="logo.png" alt=""><b>BRAVO MELODY COMPOSER</b>
+  <nav><a class="hide" href="#como">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <img src="logo.png" alt="Bravo Melody Composer">
+  <h1>Ideas para tus beats<br><span>en segundos</span></h1>
+  <p class="lead">Un plugin para FL Studio que te crea melodías, acordes, bajos y baterías listos para usar. Eliges el género y el ánimo, pulsas Generar y arrastras el MIDI a tu proyecto.</p>
+  <div class="cta"><a class="btn red" href="#prueba">Pruébalo gratis 14 días</a><a class="btn ghost" href="#precio">Comprar · $29</a></div>
+  <small>Sin tarjeta para la prueba · Pago único, sin suscripción</small>
+</div></div>
+
+<section id="que"><div class="wrap">
+  <h2>Se acabó el bloqueo creativo</h2>
+  <p class="sub">Todo lo que necesitas para empezar un beat, hecho a la medida del género que produces.</p>
+  <div class="grid">
+    <div class="card"><div class="ico">🎹</div><h3>Melodía, acordes, bajo y batería</h3><p>Cada idea trae sus partes coordinadas en la misma tonalidad. Cambia una sola parte si no te convence.</p></div>
+    <div class="card"><div class="ico">🔥</div><h3>Suena al género</h3><p>Cada estilo tiene su propio ritmo, sus progresiones y su forma de bajo: un drill no suena a un reggaetón.</p></div>
+    <div class="card"><div class="ico">🎭</div><h3>Ánimos</h3><p>Oscuro, triste, épico, soñador, tenso, terror, árabe… El ánimo cambia los acordes y la melodía.</p></div>
+    <div class="card"><div class="ico">💾</div><h3>Tu biblioteca de ideas</h3><p>Guarda las ideas que te gustan, escúchalas con sonidos y arrástralas a FL cuando las necesites.</p></div>
+  </div>
+  <div class="tags"><span>Trap</span><span>Rap</span><span>Drill</span><span>Reggaetón</span><span>Dancehall</span><span>Afrobeat</span><span>R&amp;B</span><span>Soul</span><span>Lo-fi</span><span>Jazz</span><span>Pop</span><span>Balada</span><span>Cinemático</span><span>Merengue</span><span>Perico ripiao</span><span>Funk brasileño</span><span>Electrónica</span><span>Árabe</span></div>
+</div></section>
+
+<section id="como"><div class="wrap">
+  <h2>Cómo funciona</h2>
+  <p class="sub">En cinco minutos estás generando.</p>
+  <div class="steps">
+    <div class="card"><h3>Crea tu cuenta</h3><p>Con tu correo y una contraseña. Tu prueba de 14 días empieza al momento.</p></div>
+    <div class="card"><h3>Descarga e instala</h3><p>Descarga el .zip, descomprímelo y haz doble clic en «Instalar.bat». El plugin aparece como «BMC - Bravo Melody Composer».</p></div>
+    <div class="card"><h3>Entra y genera</h3><p>Ábrelo en FL, entra con tu correo y tu contraseña, elige género y ánimo y pulsa Generar.</p></div>
+  </div>
+</div></section>
+
+<section id="prueba"><div class="wrap price">
+  <div>
+    <h2>Pruébalo gratis 14 días</h2>
+    <p class="sub">Sin tarjeta. Si te gusta, lo compras; si no, no pagas nada. Las ideas que guardes son tuyas.</p>
+    <div class="card">
+      <form id="signup" autocomplete="on">
+        <div class="row"><label for="name">Tu nombre o nombre artístico</label><input id="name" type="text" required maxlength="80" autocomplete="name"></div>
+        <div class="row"><label for="email">Correo</label><input id="email" type="email" required autocomplete="email"></div>
+        <div class="row"><label for="pass">Contraseña (mínimo 8 caracteres)</label><input id="pass" type="password" required minlength="8" autocomplete="new-password"></div>
+        <div class="row check"><input id="terms" type="checkbox" required><label for="terms" style="margin:0">Acepto los <a href="terminos.html" target="_blank">Términos de uso</a> y la <a href="privacidad.html" target="_blank">Política de privacidad</a>, y recibir correos sobre mi cuenta, mi prueba y ofertas de Bravo Melody Composer (puedo darme de baja cuando quiera).</label></div>
+        <button class="btn red" id="signupBtn" type="submit" style="width:100%">Empezar mi prueba gratis</button>
+        <div class="msg" id="signupMsg"></div>
+      </form>
+      <div class="done" id="done">
+        <h3>¡Listo! Tu prueba de 14 días empezó 🎉</h3>
+        <p>Cuenta: <b id="doneEmail"></b></p>
+        <a class="btn red" id="dl" href="#" target="_blank" rel="noopener" style="width:100%">Descargar el instalador</a>
+        <p class="paynote" id="dlNote"></p>
+        <ol>
+          <li>Descarga el archivo .zip y descomprímelo (clic derecho → «Extraer todo»).</li>
+          <li>Cierra FL Studio y haz doble clic en «Instalar.bat», dentro de la carpeta «Bravo Melody Composer».</li>
+          <li>Abre FL Studio, añade «BMC - Bravo Melody Composer» y entra con tu correo y tu contraseña.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="paynote">¿Ya tienes cuenta? Descarga la última versión <a href="#" id="dlAgain">aquí</a>.</p>
+  </div>
+
+  <div id="precio">
+    <h2>Precio de lanzamiento</h2>
+    <p class="sub">Pago único. Sin mensualidades.</p>
+    <div class="pricebox">
+      <div class="badge">LANZAMIENTO −63 %</div>
+      <div class="old">$79</div>
+      <div class="now"><sup>$</sup>29</div>
+      <div style="color:var(--dim)">dólares · una sola vez</div>
+      <ul>
+        <li>Licencia para siempre</li>
+        <li>Úsalo en 2 computadoras</li>
+        <li>Todas las actualizaciones incluidas</li>
+        <li>Usa las ideas en tus canciones, también comerciales</li>
+        <li>Paga con PayPal o con tarjeta</li>
+      </ul>
+      <form id="buy">
+        <div class="row"><label for="buyEmail">Correo de tu cuenta (para activarla)</label><input id="buyEmail" type="email" required placeholder="el mismo con el que creaste la cuenta"></div>
+        <button class="btn red" type="submit" style="width:100%">Comprar con PayPal · $29</button>
+      </form>
+      <p class="paynote">Puedes pagar con tarjeta aunque no tengas cuenta de PayPal. Activamos tu licencia en cuanto recibimos el pago (normalmente el mismo día) y te avisamos por correo.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="preguntas" class="faq"><div class="wrap">
+  <h2>Preguntas</h2>
+  <details><summary>¿En qué programas funciona?</summary><p>Es un plugin VST3 para Windows, hecho y probado para FL Studio. Por ahora no hay versión para Mac.</p></details>
+  <details><summary>¿Qué pasa cuando termina la prueba?</summary><p>Tus ideas guardadas siguen ahí: puedes abrirlas y escucharlas. Para seguir generando ideas nuevas, compra la licencia y la activamos en tu misma cuenta.</p></details>
+  <details><summary>¿Necesito internet?</summary><p>Para entrar con tu cuenta y, después, al menos una vez cada 14 días. Puedes trabajar sin conexión entre medias.</p></details>
+  <details><summary>¿Las ideas son mías?</summary><p>Sí. Puedes usar las melodías, acordes y bajos que generes en tus canciones y beats, también para venderlos, sin pagar regalías.</p></details>
+  <details><summary>¿En cuántas computadoras puedo usarlo?</summary><p>En 2. Si cambias de computadora, escríbenos y liberamos la vieja.</p></details>
+  <details><summary>¿Cómo se activa mi licencia después de pagar?</summary><p>Pon en el formulario de compra el correo de tu cuenta. Cuando llega el pago la dejamos activa para siempre y te avisamos. El plugin lo detecta solo la próxima vez que lo abras.</p></details>
+  <details><summary>Olvidé mi contraseña</summary><p>En el plugin, en la ventana «Tu cuenta», pulsa «¿Olvidaste tu contraseña?» y te llegará un correo para cambiarla.</p></details>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© <span id="year"></span> Ley Produce · Bravo Melody Composer</span>
+  <a href="terminos.html">Términos de uso</a><a href="privacidad.html">Privacidad</a><a href="mailto:leyproduce@gmail.com">Contacto: leyproduce@gmail.com</a>
+</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+// web-v1: la página de Bravo Melody Composer. La clave pública (anon) es pública por diseño:
+// la seguridad la ponen las reglas del servidor (una cuenta solo ve lo suyo).
+const SUPABASE_URL='https://zlgkdobxvdfhdikbcyzr.supabase.co';
+const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsZ2tkb2J4dmRmaGRpa2JjeXpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUwOTY4NDMsImV4cCI6MjExMDY3Mjg0M30.asIyI-s_jwAWGNH0KrLzHwNlC0y4a6gTNmFOwx95zSY';
+const PAYPAL='leyproduce@gmail.com',PRICE='29.00',TERMS_VERSION='1';
+const db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:false}});
+const $=id=>document.getElementById(id);
+$('year').textContent=new Date().getFullYear();
+let download=null;
+async function latest(){if(download)return download;try{const {data}=await db.rpc('bmc_latest_download');download=data||{};}catch(e){download={};}return download;}
+function setDownload(){latest().then(d=>{
+  if(d&&d.download_url){$('dl').href=d.download_url;$('dlNote').textContent='Versión '+d.version;}
+  else{$('dl').href='mailto:'+PAYPAL+'?subject=Enlace%20de%20descarga%20Bravo%20Melody%20Composer';$('dl').textContent='Pedir el enlace de descarga';$('dlNote').textContent='El enlace de descarga aún no está publicado: escríbenos y te lo enviamos.';}
+});}
+$('dlAgain').onclick=async e=>{e.preventDefault();const d=await latest();if(d&&d.download_url)window.open(d.download_url,'_blank','noopener');else location.href='mailto:'+PAYPAL+'?subject=Enlace%20de%20descarga';};
+function say(text,bad){$('signupMsg').textContent=text;$('signupMsg').className='msg '+(bad?'bad':'ok');}
+$('signup').onsubmit=async e=>{
+  e.preventDefault();
+  const name=$('name').value.trim(),email=$('email').value.trim().toLowerCase(),pass=$('pass').value;
+  if(!$('terms').checked)return say('Para crear la cuenta tienes que aceptar los Términos.',true);
+  if(pass.length<8)return say('La contraseña necesita al menos 8 caracteres.',true);
+  $('signupBtn').disabled=true;say('Creando tu cuenta…');
+  const {data,error}=await db.auth.signUp({email,password:pass,options:{data:{name,source:'web',accepted_terms:true,terms_version:TERMS_VERSION}}});
+  $('signupBtn').disabled=false;
+  if(error){
+    const m=(error.message||'').toLowerCase();
+    if(m.includes('already')||m.includes('registered'))return say('Ese correo ya tiene una cuenta. Entra con él en el plugin, o usa «¿Olvidaste tu contraseña?».',true);
+    if(m.includes('password'))return say('Esa contraseña es muy débil. Prueba con una más larga.',true);
+    if(m.includes('rate')||m.includes('too many'))return say('Demasiados intentos seguidos. Espera unos minutos y vuelve a probar.',true);
+    if(m.includes('email'))return say('Ese correo no parece válido.',true);
+    return say('No se pudo crear la cuenta: '+error.message,true);
+  }
+  if(data&&data.user&&Array.isArray(data.user.identities)&&data.user.identities.length===0)return say('Ese correo ya tiene una cuenta. Entra con él en el plugin.',true);
+  $('signup').style.display='none';$('done').style.display='block';$('doneEmail').textContent=email;$('buyEmail').value=email;
+  if(!data.session){$('dlNote').textContent='Te enviamos un correo para confirmar tu cuenta: ábrelo antes de entrar en el plugin.';}
+  setDownload();
+};
+$('buy').onsubmit=e=>{
+  e.preventDefault();const email=$('buyEmail').value.trim().toLowerCase();if(!email)return;
+  const base=location.href.split('#')[0].replace(/[^/]*$/,'');
+  const q=new URLSearchParams({cmd:'_xclick',business:PAYPAL,item_name:'Bravo Melody Composer - licencia para siempre ('+email+')',item_number:'BMC-LIFETIME',
+    amount:PRICE,currency_code:'USD',no_shipping:'1',no_note:'1',custom:email,charset:'utf-8',
+    return:base+'gracias.html',cancel_return:base+'#precio',rm:'1'});
+  location.href='https://www.paypal.com/cgi-bin/webscr?'+q.toString();
+};
+</script>
+</body>
+</html>
