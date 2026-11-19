@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bravo Melody Composer · Ideas para tus beats en FL Studio</title>
+<title>Bravo Melody Composer · Ideas para tus beats en segundos</title>
 <meta name="description" content="Plugin VST3 que crea melodías, acordes, bajos y baterías en segundos: trap, reggaetón, drill, afrobeat, R&B, merengue y más. Pruébalo gratis 14 días.">
 <meta property="og:title" content="Bravo Melody Composer">
 <meta property="og:description" content="Melodías, acordes, bajo y batería para tus beats en segundos. 14 días gratis.">
@@ -74,6 +74,15 @@ input:focus{outline:2px solid var(--red);outline-offset:1px}
 .faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
 .faq summary{cursor:pointer;font-weight:600}
 .faq p{color:var(--dim);margin:10px 0 0}
+.samples{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.sample{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .15s}
+.sample:hover,.sample.on{border-color:var(--red)}
+.sample .play{flex:none;width:44px;height:44px;border-radius:50%;background:var(--red);display:grid;place-items:center;border:0;color:#fff;font-size:16px;cursor:pointer}
+.sample b{display:block;font-size:16px}
+.sample span{color:var(--dim);font-size:13px}
+.sample .bar{height:3px;background:#2b2420;border-radius:2px;margin-top:8px;overflow:hidden}
+.sample .bar i{display:block;height:100%;width:0;background:var(--red2)}
+.sample .info{flex:1;min-width:0}
 footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font-size:14px}
 footer .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
 footer a{color:var(--dim)}
@@ -84,16 +93,22 @@ footer a{color:var(--dim)}
 <body>
 <header class="top"><div class="wrap">
   <img src="logo.png" alt=""><b>BRAVO MELODY COMPOSER</b>
-  <nav><a class="hide" href="#como">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
+  <nav><a class="hide" href="#escucha">Escuchar</a><a class="hide" href="#como">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
 </div></header>
 
 <div class="hero"><div class="wrap">
   <img src="logo.png" alt="Bravo Melody Composer">
   <h1>Ideas para tus beats<br><span>en segundos</span></h1>
-  <p class="lead">Un plugin para FL Studio que te crea melodías, acordes, bajos y baterías listos para usar. Eliges el género y el ánimo, pulsas Generar y arrastras el MIDI a tu proyecto.</p>
+  <p class="lead">Un plugin VST3 para FL Studio, Ableton, Cubase, Studio One, Reaper y cualquier programa con VST3, que te crea melodías, acordes, bajos y baterías listos para usar. Eliges el género y el ánimo, pulsas Generar y arrastras el MIDI a tu proyecto.</p>
   <div class="cta"><a class="btn red" href="#prueba">Pruébalo gratis 14 días</a><a class="btn ghost" href="#precio">Comprar · $29</a></div>
   <small>Sin tarjeta para la prueba · Pago único, sin suscripción</small>
 </div></div>
+
+<section id="escucha"><div class="wrap">
+  <h2>Escucha lo que crea</h2>
+  <p class="sub">Ideas reales generadas con Bravo Melody Composer y guardadas tal cual salieron: melodía, acordes y bajo, con los sonidos del plugin.</p>
+  <div class="samples" id="samples"></div>
+</div></section>
 
 <section id="que"><div class="wrap">
   <h2>Se acabó el bloqueo creativo</h2>
@@ -102,7 +117,7 @@ footer a{color:var(--dim)}
     <div class="card"><div class="ico">🎹</div><h3>Melodía, acordes, bajo y batería</h3><p>Cada idea trae sus partes coordinadas en la misma tonalidad. Cambia una sola parte si no te convence.</p></div>
     <div class="card"><div class="ico">🔥</div><h3>Suena al género</h3><p>Cada estilo tiene su propio ritmo, sus progresiones y su forma de bajo: un drill no suena a un reggaetón.</p></div>
     <div class="card"><div class="ico">🎭</div><h3>Ánimos</h3><p>Oscuro, triste, épico, soñador, tenso, terror, árabe… El ánimo cambia los acordes y la melodía.</p></div>
-    <div class="card"><div class="ico">💾</div><h3>Tu biblioteca de ideas</h3><p>Guarda las ideas que te gustan, escúchalas con sonidos y arrástralas a FL cuando las necesites.</p></div>
+    <div class="card"><div class="ico">💾</div><h3>Tu biblioteca de ideas</h3><p>Guarda las ideas que te gustan, escúchalas con sonidos y arrástralas a tu proyecto cuando las necesites.</p></div>
   </div>
   <div class="tags"><span>Trap</span><span>Rap</span><span>Drill</span><span>Reggaetón</span><span>Dancehall</span><span>Afrobeat</span><span>R&amp;B</span><span>Soul</span><span>Lo-fi</span><span>Jazz</span><span>Pop</span><span>Balada</span><span>Cinemático</span><span>Merengue</span><span>Perico ripiao</span><span>Funk brasileño</span><span>Electrónica</span><span>Árabe</span></div>
 </div></section>
@@ -112,8 +127,8 @@ footer a{color:var(--dim)}
   <p class="sub">En cinco minutos estás generando.</p>
   <div class="steps">
     <div class="card"><h3>Crea tu cuenta</h3><p>Con tu correo y una contraseña. Tu prueba de 14 días empieza al momento.</p></div>
-    <div class="card"><h3>Descarga e instala</h3><p>Descarga el .zip, descomprímelo y haz doble clic en «Instalar.bat». El plugin aparece como «BMC - Bravo Melody Composer».</p></div>
-    <div class="card"><h3>Entra y genera</h3><p>Ábrelo en FL, entra con tu correo y tu contraseña, elige género y ánimo y pulsa Generar.</p></div>
+    <div class="card"><h3>Descarga e instala</h3><p>Descarga el .zip, descomprímelo y haz doble clic en «Instalar.bat». En tu programa aparece como «BMC - Bravo Melody Composer».</p></div>
+    <div class="card"><h3>Entra y genera</h3><p>Ábrelo en tu programa (FL Studio, Ableton, Cubase…), entra con tu correo y tu contraseña, elige género y ánimo y pulsa Generar.</p></div>
   </div>
 </div></section>
 
@@ -137,8 +152,8 @@ footer a{color:var(--dim)}
         <p class="paynote" id="dlNote"></p>
         <ol>
           <li>Descarga el archivo .zip y descomprímelo (clic derecho → «Extraer todo»).</li>
-          <li>Cierra FL Studio y haz doble clic en «Instalar.bat», dentro de la carpeta «Bravo Melody Composer».</li>
-          <li>Abre FL Studio, añade «BMC - Bravo Melody Composer» y entra con tu correo y tu contraseña.</li>
+          <li>Cierra tu programa de música y haz doble clic en «Instalar.bat», dentro de la carpeta «Bravo Melody Composer».</li>
+          <li>Abre tu programa de música, añade el plugin «BMC - Bravo Melody Composer» (si no aparece, busca plugins nuevos) y entra con tu correo y tu contraseña.</li>
         </ol>
       </div>
     </div>
@@ -171,7 +186,7 @@ footer a{color:var(--dim)}
 
 <section id="preguntas" class="faq"><div class="wrap">
   <h2>Preguntas</h2>
-  <details><summary>¿En qué programas funciona?</summary><p>Es un plugin VST3 para Windows, hecho y probado para FL Studio. Por ahora no hay versión para Mac.</p></details>
+  <details><summary>¿En qué programas funciona?</summary><p>En cualquier programa de Windows que use plugins VST3: FL Studio, Ableton Live, Cubase, Studio One, Reaper, Bitwig y otros. Por ahora no hay versión para Mac.</p></details>
   <details><summary>¿Qué pasa cuando termina la prueba?</summary><p>Tus ideas guardadas siguen ahí: puedes abrirlas y escucharlas. Para seguir generando ideas nuevas, compra la licencia y la activamos en tu misma cuenta.</p></details>
   <details><summary>¿Necesito internet?</summary><p>Para entrar con tu cuenta y, después, al menos una vez cada 14 días. Puedes trabajar sin conexión entre medias.</p></details>
   <details><summary>¿Las ideas son mías?</summary><p>Sí. Puedes usar las melodías, acordes y bajos que generes en tus canciones y beats, también para venderlos, sin pagar regalías.</p></details>
@@ -197,6 +212,26 @@ if(/type=recovery|error_description/.test(location.hash))location.replace('cambi
 const db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:false}});
 const $=id=>document.getElementById(id);
 $('year').textContent=new Date().getFullYear();
+// muestras: ideas guardadas por Ley Produce, renderizadas con los sonidos del plugin
+const SAMPLES=[{"f": "01-funk_bh", "g": "Funk BH", "m": "Nostálgico", "k": "Cm", "t": 130}, {"f": "02-trap", "g": "Trap", "m": "Oscuro", "k": "Gm", "t": 90}, {"f": "03-drill", "g": "Drill", "m": "Alegre", "k": "Ebm", "t": 94}, {"f": "04-afro_dancehall", "g": "Afro-dancehall", "m": "Energético", "k": "Am", "t": 106}, {"f": "05-ballad", "g": "Balada", "m": "Nostálgico", "k": "D", "t": 105}, {"f": "06-afrobeat", "g": "Afrobeats", "m": "", "k": "Ebm", "t": 105}, {"f": "07-african_reggae", "g": "Reggae africano", "m": "", "k": "Am", "t": 103}, {"f": "08-afrobeat_classic", "g": "Afrobeat clásico", "m": "Nostálgico", "k": "Ebm", "t": 98}, {"f": "09-reggaeton", "g": "Reggaetón", "m": "", "k": "Ebm", "t": 98}, {"f": "10-hyperpop", "g": "Hyperpop", "m": "", "k": "Cm", "t": 140}, {"f": "11-funk_zoeira", "g": "Zoeira / Zona Norte", "m": "Plano", "k": "F#m", "t": 93}, {"f": "12-bruxaria", "g": "Bruxaria", "m": "Plano", "k": "F#m", "t": 93}, {"f": "13-amapiano", "g": "Amapiano", "m": "Energético", "k": "C#m", "t": 93}, {"f": "14-rap", "g": "Rap", "m": "Triste", "k": "Am", "t": 94}, {"f": "15-alte", "g": "Alte", "m": "Nostálgico", "k": "Ebm", "t": 101}, {"f": "16-pop", "g": "Pop", "m": "Terror", "k": "Ebm", "t": 120}];
+(function(){
+  const box=$('samples');const audio=new Audio();audio.preload='none';let current=null;
+  for(const x of SAMPLES){
+    const el=document.createElement('div');el.className='sample';
+    el.innerHTML='<button class="play" aria-label="Escuchar">▶</button><div class="info"><b></b><span></span><div class="bar"><i></i></div></div>';
+    el.querySelector('b').textContent=x.g;el.querySelector('span').textContent=[x.m,x.k,x.t+' BPM'].filter(Boolean).join(' · ');
+    el.onclick=()=>{
+      if(current===el){if(audio.paused)audio.play();else audio.pause();return;}
+      if(current){current.classList.remove('on');current.querySelector('.play').textContent='▶';current.querySelector('.bar i').style.width='0';}
+      current=el;el.classList.add('on');audio.src='muestras/'+x.f+'.mp3';audio.play();
+    };
+    box.appendChild(el);
+  }
+  audio.onplay=()=>{if(current)current.querySelector('.play').textContent='❚❚';};
+  audio.onpause=audio.onended=()=>{if(current)current.querySelector('.play').textContent='▶';};
+  audio.ontimeupdate=()=>{if(current&&audio.duration)current.querySelector('.bar i').style.width=(100*audio.currentTime/audio.duration)+'%';};
+})();
+
 let download=null;
 async function latest(){if(download)return download;try{const {data}=await db.rpc('bmc_latest_download');download=data||{};}catch(e){download={};}return download;}
 function setDownload(){latest().then(d=>{
