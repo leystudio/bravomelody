@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bravo Melody Composer · Ideas para tus beats en segundos</title>
-<meta name="description" content="Plugin VST3 que crea melodías, acordes, bajos y baterías en segundos: trap, reggaetón, drill, afrobeat, R&B, merengue y más. Pruébalo gratis 14 días.">
+<title>Bravo Melody Composer · Empieza tu próximo beat</title>
+<meta name="description" content="Genera melodías, acordes y bajos editables para tus beats. Plugin VST3 para Windows. Pruébalo gratis 14 días, sin tarjeta.">
 <meta property="og:title" content="Bravo Melody Composer">
-<meta property="og:description" content="Melodías, acordes, bajo y batería para tus beats en segundos. 14 días gratis.">
+<meta property="og:description" content="Genera melodías, acordes y bajos en tu estilo. Edita tu idea y llévala a FL Studio. 14 días gratis.">
 <meta property="og:image" content="compartir.jpg">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,21 +31,21 @@ header.top nav a:hover{color:var(--cream)}
 .btn.ghost{background:transparent;color:var(--cream);border:1px solid #4a3f37}
 .btn.small{padding:9px 16px;font-size:14px}
 .btn:disabled{opacity:.6;cursor:wait;transform:none}
-.hero{padding:70px 0 60px;text-align:center;position:relative;overflow:hidden;isolation:isolate}
-.hero .shot{position:absolute;z-index:-2;right:-14vw;top:120px;width:min(1500px,96vw);transform:perspective(1600px) rotateY(-16deg) rotateX(4deg);transform-origin:right center;
-  opacity:.72;filter:blur(1px) saturate(1) brightness(.9);border-radius:18px;box-shadow:0 40px 120px rgba(0,0,0,.8);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%,#000 78%,transparent 100%),linear-gradient(180deg,#000 55%,transparent 100%);-webkit-mask-composite:source-in;
-  mask-image:linear-gradient(90deg,transparent 0%,#000 32%,#000 78%,transparent 100%),linear-gradient(180deg,#000 55%,transparent 100%);mask-composite:intersect}
-.hero .visor{position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse 34% 38% at 50% 30%,rgba(13,11,10,.9),rgba(13,11,10,.45) 60%,transparent 100%),
-             linear-gradient(180deg,rgba(13,11,10,.55),rgba(13,11,10,.2) 40%,rgba(13,11,10,.85) 92%,var(--bg))}
-.hero:before{content:"";position:absolute;inset:-40% -10% auto;height:120%;background:radial-gradient(closest-side,rgba(200,22,31,.22),transparent);pointer-events:none}
-.hero img{width:min(240px,55vw);filter:drop-shadow(0 18px 40px rgba(200,22,31,.25));position:relative}
-.hero h1{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(46px,9vw,92px);line-height:.95;margin:18px 0 10px;letter-spacing:2px;position:relative}
-.hero h1 span{color:var(--red2)}
-.hero p.lead{font-size:clamp(17px,2.4vw,21px);color:var(--dim);max-width:640px;margin:0 auto 28px;position:relative}
-.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
-.hero small{display:block;margin-top:14px;color:var(--dim);position:relative}
+.hero{padding:clamp(32px,6vw,78px) 0;background:radial-gradient(ellipse at 78% 28%,#402019 0%,transparent 58%)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,52px)}
+.hero h1{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(48px,6.2vw,78px);line-height:.95;margin:0 0 16px;letter-spacing:1px}
+.hero h1 span{display:block;color:#ff6469}
+.hero .lead{font-size:clamp(16px,1.7vw,19px);color:var(--dim);margin:0 0 22px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap}
+.hero small{display:block;margin-top:12px;color:var(--dim)}
+.hero figure{margin:0}
+.plugin-shot{display:block;width:100%;height:auto;border-radius:14px;border:1px solid #514039;box-shadow:0 18px 48px #0009}
+.hero figcaption{margin-top:8px;color:var(--dim);font-size:13px}
+.hero .cta .btn{padding:12px 16px}
+html{scroll-padding-top:75px}
+:focus-visible{outline:2px solid #ff777b;outline-offset:3px}
+@media(max-width:790px){.hero .wrap{grid-template-columns:1fr}.hero h1{max-width:14ch}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 section{padding:60px 0;border-top:1px solid var(--line)}
 h2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(34px,5vw,48px);letter-spacing:1px;margin:0 0 8px}
 .sub{color:var(--dim);margin:0 0 32px}
@@ -61,16 +61,12 @@ h2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(34px,5vw,
 .feat .ico{flex:none;width:38px;height:38px;color:var(--red2);filter:drop-shadow(0 3px 6px rgba(200,22,31,.45)) drop-shadow(0 6px 14px rgba(0,0,0,.6))}
 .feat .ico svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .feat b{display:block;font-size:15.5px;margin-bottom:2px}.feat span{color:var(--dim);font-size:14px;line-height:1.5}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.tags span{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;color:var(--dim)}
 .steps{counter-reset:s;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 .steps .card:before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;margin-bottom:10px}
-.price{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.price{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:start}
 .pricebox{background:linear-gradient(180deg,#1e1715,#141110);border:1px solid #4a2a26;border-radius:18px;padding:30px;text-align:center}
-.pricebox .old{color:var(--dim);text-decoration:line-through;font-size:22px}
 .pricebox .now{font-family:"Bebas Neue",sans-serif;font-size:96px;line-height:1;color:#fff}
 .pricebox .now sup{font-size:40px;vertical-align:top;position:relative;top:14px}
-.pricebox .badge{display:inline-block;background:var(--red);color:#fff;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;margin-bottom:12px}
 .pricebox ul{list-style:none;padding:0;margin:18px 0 22px;text-align:left}
 .pricebox li{padding:6px 0 6px 28px;position:relative;color:var(--cream)}
 .pricebox li:before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:800}
@@ -88,7 +84,7 @@ input:focus{outline:2px solid var(--red);outline-offset:1px}
 .faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
 .faq summary{cursor:pointer;font-weight:600}
 .faq p{color:var(--dim);margin:10px 0 0}
-.samples{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.samples{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr))}
 .sample{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .15s}
 .sample:hover,.sample.on{border-color:var(--red)}
 .sample .play{flex:none;width:44px;height:44px;border-radius:50%;background:var(--red);display:grid;place-items:center;border:0;color:#fff;font-size:16px;cursor:pointer}
@@ -101,89 +97,131 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font-siz
 footer .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
 footer a{color:var(--dim)}
 .paynote{font-size:13px;color:var(--dim);margin-top:10px}
-@media (max-width:620px){header.top nav a.hide{display:none}.hero{padding-top:44px}}
+.more-demos,.specs{margin-top:18px}
+.more-demos summary,.specs summary{cursor:pointer;width:fit-content;color:var(--cream);padding:8px 0;font-weight:600}
+.more-demos .samples{margin-top:12px}
+.audio-status:empty{display:none}
+.workflow{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:center}
+.workflow figure{margin:0}
+.workflow-screen{position:relative}
+.workflow-highlight{position:absolute;border:2px solid #fff2dd;box-shadow:0 0 0 3px #c8161f;border-radius:8px;pointer-events:none}
+.workflow-highlight[data-step="0"]{left:47.5%;top:11%;width:10.5%;height:15%}
+.workflow-highlight[data-step="1"]{left:63%;top:31%;width:3.2%;height:5.3%}
+.workflow-highlight[data-step="2"]{left:49.5%;top:36%;width:11%;height:5.5%}
+.workflow-highlight[data-step="3"]{left:60%;top:12%;width:5%;height:13%}
+.workflow-steps{display:grid;gap:8px}
+.workflow-step{text-align:left;display:block;width:100%;padding:12px 14px;background:var(--panel);color:var(--cream);border:1px solid var(--line);border-radius:10px;font:inherit;cursor:pointer}
+.workflow-step[aria-pressed=true]{border-color:#ff6469;background:#2b1716}
+.workflow-step span{display:block;color:var(--dim);font-size:14px}
+.trust-note{font-size:14px;color:var(--dim)}
+.offer-price{color:var(--dim)}
+.offer-activation{margin:0 0 12px;color:var(--cream);font-size:14px}
+.paynote,.legal-link{overflow-wrap:anywhere}
+.beat-demo{margin-top:20px}
+.beat-demo .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.beat-demo .btn{padding:10px 14px;font-size:14px}
+.beat-demo .btn[aria-pressed=true]{border-color:#ff6469;background:#2b1716}
+@media (max-width:700px){.workflow{grid-template-columns:1fr}}
+@media (max-width:620px){header.top nav a.hide{display:none}header.top .wrap{gap:8px;padding-inline:14px}header.top nav{gap:9px}header.top b{font-size:18px;line-height:1.1}header.top img{width:28px;height:28px}header.top .btn.small{padding:9px;font-size:13px;white-space:nowrap}section{padding:38px 0}}
+@media (max-width:350px){.pricebox,.card{padding:16px}}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
   <img src="logo.png" alt=""><b>BRAVO MELODY COMPOSER</b>
-  <nav><a class="hide" href="#escucha">Escuchar</a><a class="hide" href="#funciones">Funciones</a><a class="hide" href="#como">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
+  <nav><a class="hide" href="#escucha">Escuchar</a><a class="hide" href="#flujo">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
 </div></header>
 
-<div class="hero"><img class="shot" src="plugin.jpg" alt="" aria-hidden="true"><div class="visor"></div><div class="wrap">
-  <img src="logo.png" alt="Bravo Melody Composer">
-  <h1>Ideas para tus beats<br><span>en segundos</span></h1>
-  <p class="lead">Un plugin VST3 para FL Studio, Ableton, Cubase, Studio One, Reaper y cualquier programa con VST3, que te crea melodías, acordes, bajos y baterías listos para usar. Eliges el género y el ánimo, pulsas Generar y arrastras el MIDI a tu proyecto.</p>
-  <div class="cta"><a class="btn red" href="#prueba">Pruébalo gratis 14 días</a><a class="btn ghost" href="#precio">Comprar · $29</a></div>
-  <small>Sin tarjeta para la prueba · Pago único, sin suscripción</small>
+<main>
+<div class="hero"><div class="wrap">
+  <div>
+    <h1>Empieza tu beat. <span>Hazlo tuyo.</span></h1>
+    <p class="lead">Genera melodías, acordes y bajos en tu estilo. Quédate con las partes que te gustan, cambia las demás y arrastra el MIDI a FL Studio.</p>
+    <div class="cta"><a class="btn red" href="#prueba">Probar gratis 14 días</a><a class="btn ghost" href="#escucha">Escuchar demo</a></div>
+    <small>Windows · VST3 · Sin tarjeta</small>
+  </div>
+  <figure>
+    <img class="plugin-shot" src="plugin.jpg" width="1600" height="1000" alt="Interfaz de Bravo Melody Composer con los controles de generación y las pistas de melodía, acordes y bajo.">
+    <figcaption>Bravo Melody Composer por Ley Produce</figcaption>
+  </figure>
 </div></div>
 
 <section id="escucha"><div class="wrap">
   <h2>Escucha lo que crea</h2>
-  <p class="sub">Ideas reales generadas con el plugin, tal cual salieron: melodía, acordes y bajo con sus sonidos grabados.</p>
+  <p class="sub">Melodía, acordes y bajo generados con Bravo Melody Composer y reproducidos con los sonidos del plugin.</p>
   <div class="samples" id="samples"></div>
+  <details class="more-demos"><summary>Más géneros</summary><div class="samples" id="moreSamples"></div></details>
+  <p class="msg bad audio-status" id="audioStatus" role="status"></p>
+  <noscript>Activa JavaScript para escuchar las demos.</noscript>
 </div></section>
 
-<section id="que"><div class="wrap">
-  <h2>Se acabó el bloqueo creativo</h2>
-  <p class="sub">Todo lo que necesitas para empezar un beat, hecho a la medida del género que produces.</p>
-  <div class="grid">
-    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/><path d="M9 10l11-2"/></svg></div><h3>Melodía, acordes, bajo y batería</h3><p>Cada idea trae sus partes coordinadas en la misma tonalidad. Cambia una sola parte si no te convence.</p></div>
-    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-4 0-6.5-2.7-6.5-6.2 0-3.6 3-5.6 3.6-9.3 2.6 1.7 3.4 4 3.2 6.1 1-.8 1.7-2 1.9-3.4 2.1 1.9 3.3 4.2 3.3 6.6C17.5 18.3 15.8 21 12 21z"/><path d="M12 21c-1.6 0-2.7-1.1-2.7-2.6 0-1.7 1.4-2.6 1.8-4.2 1.8 1.1 3.6 2.4 3.6 4.4 0 1.4-1.1 2.4-2.7 2.4z"/></svg></div><h3>Suena al género</h3><p>Cada estilo tiene su propio ritmo, sus progresiones y su forma de bajo: un drill no suena a un reggaetón.</p></div>
-    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c3 1.2 6 1.2 9 0 3 1.2 6 1.2 9 0v5c0 5.5-4 9-9 10-5-1-9-4.5-9-10z"/><path d="M7.5 10.5c.8-.6 1.9-.6 2.7 0M13.8 10.5c.8-.6 1.9-.6 2.7 0"/><path d="M9 15c1.8 1.4 4.2 1.4 6 0"/></svg></div><h3>Ánimos</h3><p>Oscuro, triste, épico, soñador, tenso, terror, árabe… El ánimo cambia los acordes y la melodía.</p></div>
-    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.2 4.6l3.8-1 3.6 15.4-3.8 1z" transform="translate(-2 1)"/></svg></div><h3>Tu biblioteca de ideas</h3><p>Guarda las ideas que te gustan, escúchalas con sonidos y arrástralas a tu proyecto cuando las necesites.</p></div>
+<section id="flujo"><div class="wrap">
+  <h2>De la primera idea a tu proyecto</h2>
+  <div class="workflow">
+    <figure class="workflow-screen">
+      <img class="plugin-shot" src="plugin.jpg" width="1600" height="1000" loading="lazy" alt="Pantalla real del plugin. Cada paso resalta el control que se usa.">
+      <div class="workflow-highlight" id="workflowHighlight" data-step="0" aria-hidden="true"></div>
+    </figure>
+    <div class="workflow-steps" role="group" aria-label="Pasos en el plugin">
+      <button class="workflow-step" type="button" aria-pressed="true"><b>1. Genera en tu estilo</b><span>Elige género y ánimo, y pulsa Generar para oír melodía, acordes y bajo juntos.</span></button>
+      <button class="workflow-step" type="button" aria-pressed="false"><b>2. Conserva los acordes</b><span>Activa el candado en Acordes. También puedes fijar la melodía.</span></button>
+      <button class="workflow-step" type="button" aria-pressed="false"><b>3. Cambia el bajo</b><span>Selecciona Bajo y usa Transformar para variar esa parte.</span></button>
+      <button class="workflow-step" type="button" aria-pressed="false"><b>4. Llévalo a tu proyecto</b><span>Arrastra el MIDI al piano roll de FL Studio para editar las notas.</span></button>
+    </div>
   </div>
-  <div class="tags"><span>Trap</span><span>Rap</span><span>Drill</span><span>Reggaetón</span><span>Dancehall</span><span>Afrobeat</span><span>R&amp;B</span><span>Soul</span><span>Lo-fi</span><span>Jazz</span><span>Pop</span><span>Balada</span><span>Cinemático</span><span>Merengue</span><span>Perico ripiao</span><span>Funk brasileño</span><span>Electrónica</span><span>Árabe</span></div>
-</div></section>
-
-<section id="funciones"><div class="wrap">
-  <h2>Todo lo que trae</h2>
-  <p class="sub">Pensado para producir rápido, sin perder el control.</p>
-  <div class="feats">
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9c-2-4-6-6-9-5 2 1 3.5 3 4 6"/><path d="M12 9c2-4 6-6 9-5-2 1-3.5 3-4 6"/><path d="M7 10c0 5 2 9 5 11 3-2 5-6 5-11-1.6-.8-3.3-1.2-5-1.2S8.6 9.2 7 10z"/></svg></div><div><b>Más de 35 géneros</b><span>Trap, drill, reggaetón, dembow, afrobeat, amapiano, R&amp;B, lo-fi, merengue, perico ripiao, funk brasileño…</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c3 1.2 6 1.2 9 0 3 1.2 6 1.2 9 0v5c0 5.5-4 9-9 10-5-1-9-4.5-9-10z"/><path d="M7.5 10.5c.8-.6 1.9-.6 2.7 0M13.8 10.5c.8-.6 1.9-.6 2.7 0"/><path d="M9 15c1.8 1.4 4.2 1.4 6 0"/></svg></div><div><b>15 ánimos</b><span>Oscuro, triste, épico, soñador, tenso, terror, árabe… cambian acordes y melodía.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 5v14M13 13l3 2-3 2z"/></svg></div><div><b>Idea o canción completa</b><span>Una idea de 4 a 16 compases o una canción con sus partes.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="5.5" height="10" rx="1.5"/><rect x="9.25" y="5" width="5.5" height="14" rx="1.5"/><rect x="16" y="7" width="5.5" height="10" rx="1.5"/></svg></div><div><b>Tres opciones: A, B y C</b><span>Cada vez que generas tienes tres ideas distintas para elegir.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v6"/><path d="M14 3v4h4"/><path d="M7 3v14h5"/><path d="M15 14l6 6M21 15v5h-5"/></svg></div><div><b>Arrastra el MIDI a tu DAW</b><span>Toda la idea o cada parte (voz, acordes, bajo) directo a tu proyecto.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h2l2-6 3 12 3-15 3 18 3-12 2 3h2"/></svg></div><div><b>Arrastra el WAV</b><span>Exporta el audio de la idea o de una parte con los sonidos del plugin.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l3 3-3 3"/><path d="M4 11V9a4 4 0 0 1 4-4h12"/><path d="M7 22l-3-3 3-3"/><path d="M20 13v2a4 4 0 0 1-4 4H4"/></svg></div><div><b>Tus loops, al tono de la idea</b><span>Pon un loop de tu carpeta: se ajusta al tempo y se transporta al tono que eligió el plugin.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg></div><div><b>Candados por parte</b><span>Fija la voz, los acordes o el bajo y genera solo lo demás.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></div><div><b>Transformar</b><span>Pide otra versión, cambia la densidad, el registro o el desarrollo de cada parte.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20V4M8 4L4 8M8 4l4 4"/><path d="M16 4v16M16 20l-4-4M16 20l4-4"/></svg></div><div><b>Octava y tono al instante</b><span>Sube o baja la octava de cada parte o cambia el tono sin perder la idea.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 8.2l5-.7z"/></svg></div><div><b>Tres motores</b><span>Bravo (rápido), Ley y Magenta (inteligencia artificial) para ideas diferentes.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></div><div><b>77 sonidos grabados</b><span>Pianos, cuerdas staccato, trompeta, baby bass, 808, guitarras… para escuchar al momento.</span></div></div>
-    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.2 4.6l3.8-1 3.6 15.4-3.8 1z" transform="translate(-2 1)"/></svg></div><div><b>Biblioteca de ideas</b><span>Guarda tus favoritas con su loop y recupéralas tal como estaban.</span></div></div>
+  <div class="card beat-demo">
+    <h3>El mismo reggaetón, con y sin batería</h3>
+    <p>Compara el fragmento original de Bravo con el mismo fragmento dentro de un beat. En la segunda escucha se añaden bombo, caja y hi-hat.</p>
+    <div class="cta" role="group" aria-label="Comparar el fragmento original con el beat">
+      <button class="btn ghost" id="rawBeat" type="button" aria-pressed="false">Idea original</button>
+      <button class="btn ghost" id="mixedBeat" type="button" aria-pressed="false">Con batería añadida</button>
+    </div>
+    <p id="beatStatus" class="audio-status" role="status"></p>
   </div>
+  <details id="funciones" class="specs">
+    <summary>Ver todas las funciones</summary>
+    <ul>
+      <li>Más de 35 géneros y 15 ánimos. Ideas de 4 a 16 compases o una canción por secciones.</li>
+      <li>Tres motores, Bravo, Ley y Magenta. Compara ideas con A/B/C en Bravo.</li>
+      <li>Candados, Transformar por tramos y controles de octava y tono por parte.</li>
+      <li>77 sonidos y biblioteca para guardar ideas y recuperar su loop.</li>
+      <li>Escucha con tus propios loops, ajustados al tempo y al tono de la idea.</li>
+      <li>Exporta melodía, acordes y bajo juntos o por separado. MIDI para editar notas y WAV con los sonidos del plugin. El loop de acompañamiento solo se usa para escuchar.</li>
+    </ul>
+  </details>
 </div></section>
 
 <section id="como"><div class="wrap">
-  <h2>Cómo funciona</h2>
-  <p class="sub">En cinco minutos estás generando.</p>
+  <h2>Instala y prueba en tu PC</h2>
+  <p class="sub">Plugin VST3 para Windows. Puedes usarlo con FL Studio, Ableton Live, Cubase, Studio One, Reaper y otros programas compatibles con VST3.</p>
   <div class="steps">
-    <div class="card"><h3>Crea tu cuenta</h3><p>Con tu correo y una contraseña. Tu prueba de 14 días empieza al momento.</p></div>
-    <div class="card"><h3>Descarga e instala</h3><p>Descarga el .zip, descomprímelo y haz doble clic en «Instalar.bat». En tu programa aparece como «BMC - Bravo Melody Composer».</p></div>
-    <div class="card"><h3>Entra y genera</h3><p>Ábrelo en tu programa (FL Studio, Ableton, Cubase…), entra con tu correo y tu contraseña, elige género y ánimo y pulsa Generar.</p></div>
+    <div class="card"><h3>Crea tu cuenta</h3><p>Regístrate con correo y contraseña. Tus 14 días empiezan al crear la cuenta.</p></div>
+    <div class="card"><h3>Descarga el instalador</h3><p>Descarga el ZIP (aprox. 706 MB), extráelo y ejecuta «Instalar.bat» con tu programa de música cerrado.</p></div>
+    <div class="card"><h3>Abre Bravo Melody Composer</h3><p>Busca «BMC - Bravo Melody Composer» en tus plugins VST3, inicia sesión y genera tu primera idea.</p></div>
   </div>
 </div></section>
 
 <section id="prueba"><div class="wrap price">
   <div>
     <h2>Pruébalo gratis 14 días</h2>
-    <p class="sub">Sin tarjeta. Si te gusta, lo compras; si no, no pagas nada. Las ideas que guardes son tuyas.</p>
+    <p class="sub">Sin tarjeta ni cobro automático. Puedes usar tus ideas en tus propios beats, también para venderlos.</p>
+    <p class="trust-note">Para Windows. <a href="#como">Ver el tamaño del instalador y cómo instalarlo</a>. Cuando guardas una idea en la biblioteca, Bravo envía una copia del MIDI a tu cuenta. <a href="privacidad.html">Cómo guardamos tus datos</a>.</p>
     <div class="card">
       <form id="signup" autocomplete="on">
-        <div class="row"><label for="name">Tu nombre o nombre artístico</label><input id="name" type="text" required maxlength="80" autocomplete="name"></div>
+        <div class="row"><label for="name">Nombre artístico (opcional)</label><input id="name" type="text" maxlength="80" autocomplete="nickname"></div>
         <div class="row"><label for="email">Correo</label><input id="email" type="email" required autocomplete="email"></div>
         <div class="row"><label for="pass">Contraseña (mínimo 8 caracteres)</label><input id="pass" type="password" required minlength="8" autocomplete="new-password"></div>
-        <div class="row check"><input id="terms" type="checkbox" required><label for="terms" style="margin:0">Acepto los <a href="terminos.html" target="_blank">Términos de uso</a> y la <a href="privacidad.html" target="_blank">Política de privacidad</a>, y recibir correos sobre mi cuenta, mi prueba y ofertas de Bravo Melody Composer (puedo darme de baja cuando quiera).</label></div>
+        <div class="row check"><input id="terms" type="checkbox" required><label for="terms" style="margin:0">Acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos de uso</a> y la <a href="privacidad.html" target="_blank" rel="noopener">Política de privacidad</a>.</label></div>
+        <div class="row check"><input id="offers" type="checkbox"><label for="offers">Quiero recibir ofertas por correo (opcional).</label></div>
         <button class="btn red" id="signupBtn" type="submit" style="width:100%">Empezar mi prueba gratis</button>
-        <div class="msg" id="signupMsg"></div>
+        <div class="msg" id="signupMsg" role="status"></div>
       </form>
       <div class="done" id="done">
         <h3>¡Listo! Tu prueba de 14 días empezó 🎉</h3>
         <p>Cuenta: <b id="doneEmail"></b></p>
         <a class="btn red" id="dl" href="#" target="_blank" rel="noopener" style="width:100%">Descargar el instalador</a>
-        <p class="paynote" id="dlNote"></p>
+        <p class="paynote" id="confirmNote" role="status"></p>
+        <p class="paynote" id="dlNote" role="status"></p>
         <ol>
           <li>Descarga el archivo .zip y descomprímelo (clic derecho → «Extraer todo»).</li>
           <li>Cierra tu programa de música y haz doble clic en «Instalar.bat», dentro de la carpeta «Bravo Melody Composer».</li>
@@ -195,25 +233,24 @@ footer a{color:var(--dim)}
   </div>
 
   <div id="precio">
-    <h2>Precio de lanzamiento</h2>
+    <h2>Compra tu licencia</h2>
     <p class="sub">Pago único. Sin mensualidades.</p>
     <div class="pricebox">
-      <div class="badge">LANZAMIENTO −63 %</div>
-      <div class="old">$79</div>
       <div class="now"><sup>$</sup>29</div>
-      <div style="color:var(--dim)">dólares · una sola vez</div>
+      <div class="offer-price">USD · pago único</div>
       <ul>
         <li>Licencia para siempre</li>
         <li>Úsalo en 2 computadoras</li>
         <li>Todas las actualizaciones incluidas</li>
         <li>Usa las ideas en tus canciones, también comerciales</li>
-        <li>Paga con PayPal o con tarjeta</li>
+        <li>Pago a través de PayPal</li>
       </ul>
       <form id="buy">
         <div class="row"><label for="buyEmail">Correo de tu cuenta (para activarla)</label><input id="buyEmail" type="email" required placeholder="el mismo con el que creaste la cuenta"></div>
-        <button class="btn red" type="submit" style="width:100%">Comprar con PayPal · $29</button>
+        <p class="offer-activation">Activación manual, normalmente el mismo día. Te avisamos por correo.</p>
+        <button class="btn red" type="submit" style="width:100%">Comprar con PayPal · US$29</button>
       </form>
-      <p class="paynote">Puedes pagar con tarjeta aunque no tengas cuenta de PayPal. Activamos tu licencia en cuanto recibimos el pago (normalmente el mismo día) y te avisamos por correo.</p>
+      <p class="paynote">PayPal procesa el pago. Si ya tienes cuenta en Bravo, usa ese mismo correo para que podamos activar tu licencia.</p>
     </div>
   </div>
 </div></section>
@@ -228,6 +265,7 @@ footer a{color:var(--dim)}
   <details><summary>¿Cómo se activa mi licencia después de pagar?</summary><p>Pon en el formulario de compra el correo de tu cuenta. Cuando llega el pago la dejamos activa para siempre y te avisamos. El plugin lo detecta solo la próxima vez que lo abras.</p></details>
   <details><summary>Olvidé mi contraseña</summary><p>En el plugin, en la ventana «Tu cuenta», pulsa «¿Olvidaste tu contraseña?» y te llegará un correo para cambiarla.</p></details>
 </div></section>
+</main>
 
 <footer><div class="wrap">
   <span>© <span id="year"></span> Ley Produce · Bravo Melody Composer</span>
@@ -240,34 +278,163 @@ footer a{color:var(--dim)}
 // la seguridad la ponen las reglas del servidor (una cuenta solo ve lo suyo).
 const SUPABASE_URL='https://zlgkdobxvdfhdikbcyzr.supabase.co';
 const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsZ2tkb2J4dmRmaGRpa2JjeXpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUwOTY4NDMsImV4cCI6MjExMDY3Mjg0M30.asIyI-s_jwAWGNH0KrLzHwNlC0y4a6gTNmFOwx95zSY';
-const PAYPAL='leyproduce@gmail.com',PRICE='29.00',TERMS_VERSION='1';
+const PAYPAL='leyproduce@gmail.com',PRICE='29.00',TERMS_VERSION='2';
 // los enlaces de «¿Olvidaste tu contraseña?» llegan aquí: pasan a la página de la nueva contraseña
 if(/type=recovery|error_description/.test(location.hash))location.replace('cambiar-clave.html'+location.hash);
-const db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:false}});
+const db=window.supabase?.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:false}});
 const $=id=>document.getElementById(id);
 $('year').textContent=new Date().getFullYear();
 // muestras: ideas guardadas por Ley Produce, renderizadas con los sonidos del plugin
 const SAMPLES=[{"f": "v14-trap", "g": "Trap", "m": "Nostálgico", "k": "Fm", "t": 120}, {"f": "v13-drill", "g": "Drill", "m": "Tenso", "k": "Bb", "t": 150}, {"f": "06-afrobeat", "g": "Afrobeats", "m": "", "k": "Ebm", "t": 105}, {"f": "v12-afrobeat_classic", "g": "Afrobeat clásico", "m": "Romántico", "k": "Em", "t": 110}, {"f": "v02-reggaeton", "g": "Reggaetón", "m": "Nostálgico", "k": "Bb", "t": 86}, {"f": "v10-rap", "g": "Rap", "m": "Nostálgico", "k": "C#", "t": 92}, {"f": "v08-amapiano", "g": "Amapiano", "m": "Épico", "k": "C#", "t": 92}, {"f": "v05-afro_dancehall", "g": "Afro-dancehall", "m": "Épico", "k": "C#", "t": 98}, {"f": "v09-african_reggae", "g": "Reggae africano", "m": "Épico", "k": "C#", "t": 92}, {"f": "v06-brazilian_funk", "g": "Funk brasileño", "m": "Épico", "k": "C#", "t": 126}, {"f": "v07-pop", "g": "Pop", "m": "Épico", "k": "C#", "t": 126}, {"f": "v11-hyperpop", "g": "Hyperpop", "m": "Energético", "k": "Em", "t": 135}, {"f": "v03-alte", "g": "Alte", "m": "Energético", "k": "Gm", "t": 99}, {"f": "v01-lofi", "g": "Lo-fi", "m": "Soñador", "k": "Bb", "t": 70}, {"f": "v04-minimalist", "g": "Minimalista", "m": "Cansado", "k": "C#m", "t": 99}, {"f": "g-ballad", "g": "Balada", "m": "", "k": "Fm", "t": 75}];
-(function(){
-  const box=$('samples');const audio=new Audio();audio.preload='none';let current=null;
-  for(const x of SAMPLES){
-    const el=document.createElement('div');el.className='sample';
-    el.innerHTML='<button class="play" aria-label="Escuchar">▶</button><div class="info"><b></b><span></span><div class="bar"><i></i></div></div>';
-    el.querySelector('b').textContent=x.g;el.querySelector('span').textContent=[x.m,x.k,x.t+' BPM'].filter(Boolean).join(' · ');
-    el.onclick=()=>{
-      if(current===el){if(audio.paused)audio.play();else audio.pause();return;}
-      if(current){current.classList.remove('on');current.querySelector('.play').textContent='▶';current.querySelector('.bar i').style.width='0';}
-      current=el;el.classList.add('on');audio.src='muestras/'+x.f+'.mp3';audio.play();
-    };
-    box.appendChild(el);
-  }
-  audio.onplay=()=>{if(current)current.querySelector('.play').textContent='❚❚';};
-  audio.onpause=audio.onended=()=>{if(current)current.querySelector('.play').textContent='▶';};
-  audio.ontimeupdate=()=>{if(current&&audio.duration)current.querySelector('.bar i').style.width=(100*audio.currentTime/audio.duration)+'%';};
-})();
+
+const featured = ['v02-reggaeton', 'v13-drill', '06-afrobeat'];
+const audio = new Audio();
+audio.preload = 'none';
+let currentSample;
+
+function resetSample() {
+  if (!currentSample) return;
+  currentSample.card.classList.remove('on');
+  currentSample.button.textContent = '▶';
+  currentSample.button.setAttribute('aria-label', 'Escuchar ' + currentSample.genre);
+  currentSample.progress.style.width = '0';
+}
+
+function addSample(sample, destination) {
+  const card = document.createElement('div');
+  card.className = 'sample';
+  card.innerHTML = '<button class="play" type="button">▶</button><div class="info"><b></b><span></span><div class="bar" aria-hidden="true"><i></i></div></div>';
+  card.querySelector('b').textContent = sample.g;
+  card.querySelector('span').textContent = [sample.m, sample.k, sample.t + ' BPM'].filter(Boolean).join(' · ');
+  const button = card.querySelector('button');
+  const item = {card, button, progress: card.querySelector('.bar i'), genre: sample.g};
+  button.setAttribute('aria-label', 'Escuchar ' + sample.g);
+  card.addEventListener('click', async () => {
+    $('audioStatus').textContent = '';
+    stopBeat();
+    if (currentSample === item && !audio.paused) {
+      audio.pause();
+      return;
+    }
+    if (currentSample !== item) {
+      resetSample();
+      currentSample = item;
+      audio.src = 'muestras/' + sample.f + '.mp3';
+    }
+    try {
+      await audio.play();
+    } catch (error) {
+      if (error.name !== 'AbortError' && currentSample === item) {
+        resetSample();
+        $('audioStatus').textContent = 'No se pudo reproducir ' + sample.g + '. Vuelve a intentarlo.';
+      }
+    }
+  });
+  destination.append(card);
+}
+
+for (const file of featured) addSample(SAMPLES.find(sample => sample.f === file), $('samples'));
+for (const sample of SAMPLES.filter(sample => !featured.includes(sample.f))) addSample(sample, $('moreSamples'));
+
+audio.onplay = () => {
+  if (!currentSample) return;
+  currentSample.card.classList.add('on');
+  currentSample.button.textContent = '❚❚';
+  currentSample.button.setAttribute('aria-label', 'Pausar ' + currentSample.genre);
+};
+audio.onpause = () => {
+  if (!currentSample) return;
+  currentSample.button.textContent = '▶';
+  currentSample.button.setAttribute('aria-label', 'Escuchar ' + currentSample.genre);
+};
+audio.onended = resetSample;
+audio.ontimeupdate = () => {
+  if (currentSample && audio.duration) currentSample.progress.style.width = (100 * audio.currentTime / audio.duration) + '%';
+};
+document.querySelector('.more-demos').addEventListener('toggle', event => {
+  if (!event.target.open && currentSample?.card.parentElement === $('moreSamples')) audio.pause();
+});
+const workflowSteps = [...document.querySelectorAll('.workflow-step')];
+workflowSteps.forEach((step, index) => step.addEventListener('click', () => {
+  workflowSteps.forEach(button => button.setAttribute('aria-pressed', String(button === step)));
+  $('workflowHighlight').dataset.step = index;
+}));
+
+const beatButtons = [$('rawBeat'), $('mixedBeat')];
+const beatOriginal = 'muestras/v02-reggaeton.mp3';
+let beatContext, beatGain, beatBuffer, drumBuffer, beatSource, drumSource, activeBeat;
+
+function stopBeat() {
+  activeBeat = undefined;
+  beatSource?.stop();
+  drumSource?.stop();
+  beatSource = drumSource = undefined;
+  beatButtons.forEach(button => button.setAttribute('aria-pressed', 'false'));
+  $('beatStatus').textContent = '';
+}
+
+async function loadClip(context, file) {
+  const response = await fetch(file);
+  if (!response.ok) throw new Error('Audio unavailable');
+  return context.decodeAudioData(await response.arrayBuffer());
+}
+
+function playClip(buffer, target, start, duration) {
+  const source = beatContext.createBufferSource();
+  source.buffer = buffer;
+  source.connect(target);
+  source.start(start, 0, duration);
+  return source;
+}
+
+beatButtons.forEach((button, index) => {
+  button.addEventListener('click', async () => {
+    const wasPlaying = activeBeat?.button === button;
+    stopBeat();
+    if (wasPlaying) return;
+    audio.pause();
+    const request = {button};
+    activeBeat = request;
+    button.setAttribute('aria-pressed', 'true');
+    $('beatStatus').textContent = 'Cargando el fragmento…';
+    try {
+      if (!beatContext) {
+        beatContext = new AudioContext();
+        beatGain = beatContext.createGain();
+        beatGain.gain.value = 0.72;
+        beatGain.connect(beatContext.destination);
+      }
+      await beatContext.resume();
+      beatBuffer ??= loadClip(beatContext, beatOriginal).catch(error => {
+        beatBuffer = undefined;
+        throw error;
+      });
+      if (index) drumBuffer ??= loadClip(beatContext, 'muestras/bateria-demo.wav').catch(error => {
+        drumBuffer = undefined;
+        throw error;
+      });
+      const [original, drums] = await Promise.all([beatBuffer, index ? drumBuffer : null]);
+      if (activeBeat !== request) return;
+      const start = beatContext.currentTime + 0.05;
+      const duration = Math.min(4 * 4 * 60 / 86, original.duration);
+      beatSource = playClip(original, beatGain, start, duration);
+      if (drums) drumSource = playClip(drums, beatContext.destination, start, duration);
+      beatSource.onended = () => {
+        if (activeBeat !== request) return;
+        beatSource = drumSource = undefined;
+        stopBeat();
+      };
+      $('beatStatus').textContent = 'Reproduciendo ' + (index ? 'el fragmento con batería añadida.' : 'la idea original.');
+    } catch {
+      if (activeBeat !== request) return;
+      stopBeat();
+      $('beatStatus').textContent = 'No se pudo reproducir el fragmento. Vuelve a intentarlo.';
+    }
+  });
+});
 
 let download=null;
-async function latest(){if(download)return download;try{const {data}=await db.rpc('bmc_latest_download');download=data||{};}catch(e){download={};}return download;}
+async function latest(){if(download)return download;try{const {data}=await db.rpc('bmc_latest_download');if(data?.download_url)download=data;return data;}catch{return null;}}
 function setDownload(){latest().then(d=>{
   if(d&&d.download_url){$('dl').href=d.download_url;$('dlNote').textContent='Versión '+d.version;}
   else{$('dl').href='mailto:'+PAYPAL+'?subject=Enlace%20de%20descarga%20Bravo%20Melody%20Composer';$('dl').textContent='Pedir el enlace de descarga';$('dlNote').textContent='El enlace de descarga aún no está publicado: escríbenos y te lo enviamos.';}
@@ -280,8 +447,15 @@ $('signup').onsubmit=async e=>{
   if(!$('terms').checked)return say('Para crear la cuenta tienes que aceptar los Términos.',true);
   if(pass.length<8)return say('La contraseña necesita al menos 8 caracteres.',true);
   $('signupBtn').disabled=true;say('Creando tu cuenta…');
-  const {data,error}=await db.auth.signUp({email,password:pass,options:{data:{name,source:'web',accepted_terms:true,terms_version:TERMS_VERSION}}});
-  $('signupBtn').disabled=false;
+  let result;
+  try {
+    result=await db.auth.signUp({email,password:pass,options:{data:{name,source:'web',accepted_terms:true,terms_version:TERMS_VERSION,marketing_opt_in:$('offers').checked}}});
+  } catch {
+    return say('El registro no está disponible en este momento. Vuelve a intentarlo.',true);
+  } finally {
+    $('signupBtn').disabled=false;
+  }
+  const {data,error}=result;
   if(error){
     const m=(error.message||'').toLowerCase();
     if(m.includes('already')||m.includes('registered'))return say('Ese correo ya tiene una cuenta. Entra con él en el plugin, o usa «¿Olvidaste tu contraseña?».',true);
@@ -292,7 +466,7 @@ $('signup').onsubmit=async e=>{
   }
   if(data&&data.user&&Array.isArray(data.user.identities)&&data.user.identities.length===0)return say('Ese correo ya tiene una cuenta. Entra con él en el plugin.',true);
   $('signup').style.display='none';$('done').style.display='block';$('doneEmail').textContent=email;$('buyEmail').value=email;
-  if(!data.session){$('dlNote').textContent='Te enviamos un correo para confirmar tu cuenta: ábrelo antes de entrar en el plugin.';}
+  if(!data.session){$('confirmNote').textContent='Te enviamos un correo para confirmar tu cuenta: ábrelo antes de entrar en el plugin.';}
   setDownload();
 };
 $('buy').onsubmit=e=>{
