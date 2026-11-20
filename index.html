@@ -105,10 +105,12 @@ footer a{color:var(--dim)}
 .workflow figure{margin:0}
 .workflow-screen{position:relative}
 .workflow-highlight{position:absolute;border:2px solid #fff2dd;box-shadow:0 0 0 3px #c8161f;border-radius:8px;pointer-events:none}
-.workflow-highlight[data-step="0"]{left:47.5%;top:11%;width:10.5%;height:15%}
-.workflow-highlight[data-step="1"]{left:63%;top:31%;width:3.2%;height:5.3%}
-.workflow-highlight[data-step="2"]{left:49.5%;top:36%;width:11%;height:5.5%}
-.workflow-highlight[data-step="3"]{left:60%;top:12%;width:5%;height:13%}
+.workflow-screen[data-step="0"] .workflow-highlight{left:47.5%;top:11%;width:10.5%;height:15%}
+.workflow-screen[data-step="1"] .workflow-highlight{left:63%;top:31%;width:3.2%;height:5.3%}
+.workflow-screen[data-step="2"] .workflow-highlight{left:40.6%;top:36.6%;width:8.7%;height:3.7%}
+.workflow-screen[data-step="3"] .workflow-highlight{left:60%;top:12%;width:5%;height:13%}
+.workflow-highlight.workflow-bass{display:none}
+.workflow-screen[data-step="2"] .workflow-bass{display:block;left:76.6%;top:31.6%;width:4.8%;height:3.8%}
 .workflow-steps{display:grid;gap:8px}
 .workflow-step{text-align:left;display:block;width:100%;padding:12px 14px;background:var(--panel);color:var(--cream);border:1px solid var(--line);border-radius:10px;font:inherit;cursor:pointer}
 .workflow-step[aria-pressed=true]{border-color:#ff6469;background:#2b1716}
@@ -158,9 +160,10 @@ footer a{color:var(--dim)}
 <section id="flujo"><div class="wrap">
   <h2>De la primera idea a tu proyecto</h2>
   <div class="workflow">
-    <figure class="workflow-screen">
+    <figure class="workflow-screen" id="workflowScreen" data-step="0">
       <img class="plugin-shot" src="plugin.jpg" width="1600" height="1000" loading="lazy" alt="Pantalla real del plugin. Cada paso resalta el control que se usa.">
-      <div class="workflow-highlight" id="workflowHighlight" data-step="0" aria-hidden="true"></div>
+      <div class="workflow-highlight" aria-hidden="true"></div>
+      <div class="workflow-highlight workflow-bass" aria-hidden="true"></div>
     </figure>
     <div class="workflow-steps" role="group" aria-label="Pasos en el plugin">
       <button class="workflow-step" type="button" aria-pressed="true"><b>1. Genera en tu estilo</b><span>Elige género y ánimo, y pulsa Generar para oír melodía, acordes y bajo juntos.</span></button>
@@ -171,7 +174,7 @@ footer a{color:var(--dim)}
   </div>
   <div class="card beat-demo">
     <h3>El mismo reggaetón, con y sin batería</h3>
-    <p>Compara el fragmento original de Bravo con el mismo fragmento dentro de un beat. En la segunda escucha se añaden bombo, caja y hi-hat.</p>
+    <p>Escucha la idea original y compárala con la misma interpretación acompañada por un loop de batería.</p>
     <div class="cta" role="group" aria-label="Comparar el fragmento original con el beat">
       <button class="btn ghost" id="rawBeat" type="button" aria-pressed="false">Idea original</button>
       <button class="btn ghost" id="mixedBeat" type="button" aria-pressed="false">Con batería añadida</button>
@@ -285,9 +288,9 @@ const db=window.supabase?.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persist
 const $=id=>document.getElementById(id);
 $('year').textContent=new Date().getFullYear();
 // muestras: ideas guardadas por Ley Produce, renderizadas con los sonidos del plugin
-const SAMPLES=[{"f": "v14-trap", "g": "Trap", "m": "Nostálgico", "k": "Fm", "t": 120}, {"f": "v13-drill", "g": "Drill", "m": "Tenso", "k": "Bb", "t": 150}, {"f": "06-afrobeat", "g": "Afrobeats", "m": "", "k": "Ebm", "t": 105}, {"f": "v12-afrobeat_classic", "g": "Afrobeat clásico", "m": "Romántico", "k": "Em", "t": 110}, {"f": "v02-reggaeton", "g": "Reggaetón", "m": "Nostálgico", "k": "Bb", "t": 86}, {"f": "v10-rap", "g": "Rap", "m": "Nostálgico", "k": "C#", "t": 92}, {"f": "v08-amapiano", "g": "Amapiano", "m": "Épico", "k": "C#", "t": 92}, {"f": "v05-afro_dancehall", "g": "Afro-dancehall", "m": "Épico", "k": "C#", "t": 98}, {"f": "v09-african_reggae", "g": "Reggae africano", "m": "Épico", "k": "C#", "t": 92}, {"f": "v06-brazilian_funk", "g": "Funk brasileño", "m": "Épico", "k": "C#", "t": 126}, {"f": "v07-pop", "g": "Pop", "m": "Épico", "k": "C#", "t": 126}, {"f": "v11-hyperpop", "g": "Hyperpop", "m": "Energético", "k": "Em", "t": 135}, {"f": "v03-alte", "g": "Alte", "m": "Energético", "k": "Gm", "t": 99}, {"f": "v01-lofi", "g": "Lo-fi", "m": "Soñador", "k": "Bb", "t": 70}, {"f": "v04-minimalist", "g": "Minimalista", "m": "Cansado", "k": "C#m", "t": 99}, {"f": "g-ballad", "g": "Balada", "m": "", "k": "Fm", "t": 75}];
+const SAMPLES=[{"f": "v14-trap", "g": "Trap", "m": "Nostálgico", "k": "Fm", "t": 120}, {"f": "v13-drill", "g": "Drill", "m": "Tenso", "k": "Bb", "t": 150}, {"f": "06-afrobeat", "g": "Afrobeats", "m": "", "k": "Ebm", "t": 105}, {"f": "v12-afrobeat_classic", "g": "Afrobeat clásico", "m": "Romántico", "k": "Em", "t": 110}, {"f": "reggaeton-95-original", "g": "Reggaetón", "m": "", "k": "Fa♯ menor", "t": 95}, {"f": "v10-rap", "g": "Rap", "m": "Nostálgico", "k": "C#", "t": 92}, {"f": "v08-amapiano", "g": "Amapiano", "m": "Épico", "k": "C#", "t": 92}, {"f": "v05-afro_dancehall", "g": "Afro-dancehall", "m": "Épico", "k": "C#", "t": 98}, {"f": "v09-african_reggae", "g": "Reggae africano", "m": "Épico", "k": "C#", "t": 92}, {"f": "v06-brazilian_funk", "g": "Funk brasileño", "m": "Épico", "k": "C#", "t": 126}, {"f": "v07-pop", "g": "Pop", "m": "Épico", "k": "C#", "t": 126}, {"f": "v11-hyperpop", "g": "Hyperpop", "m": "Energético", "k": "Em", "t": 135}, {"f": "v03-alte", "g": "Alte", "m": "Energético", "k": "Gm", "t": 99}, {"f": "v01-lofi", "g": "Lo-fi", "m": "Soñador", "k": "Bb", "t": 70}, {"f": "v04-minimalist", "g": "Minimalista", "m": "Cansado", "k": "C#m", "t": 99}, {"f": "g-ballad", "g": "Balada", "m": "", "k": "Fm", "t": 75}];
 
-const featured = ['v02-reggaeton', 'v13-drill', '06-afrobeat'];
+const featured = ['reggaeton-95-original', 'v13-drill', '06-afrobeat'];
 const audio = new Audio();
 audio.preload = 'none';
 let currentSample;
@@ -357,34 +360,19 @@ document.querySelector('.more-demos').addEventListener('toggle', event => {
 const workflowSteps = [...document.querySelectorAll('.workflow-step')];
 workflowSteps.forEach((step, index) => step.addEventListener('click', () => {
   workflowSteps.forEach(button => button.setAttribute('aria-pressed', String(button === step)));
-  $('workflowHighlight').dataset.step = index;
+  $('workflowScreen').dataset.step = index;
 }));
 
 const beatButtons = [$('rawBeat'), $('mixedBeat')];
-const beatOriginal = 'muestras/v02-reggaeton.mp3';
-let beatContext, beatGain, beatBuffer, drumBuffer, beatSource, drumSource, activeBeat;
+const beatClips = ['reggaeton-95-original', 'reggaeton-95-con-bateria'];
+let activeBeat;
 
 function stopBeat() {
+  const previous = activeBeat;
   activeBeat = undefined;
-  beatSource?.stop();
-  drumSource?.stop();
-  beatSource = drumSource = undefined;
+  previous?.player.pause();
   beatButtons.forEach(button => button.setAttribute('aria-pressed', 'false'));
   $('beatStatus').textContent = '';
-}
-
-async function loadClip(context, file) {
-  const response = await fetch(file);
-  if (!response.ok) throw new Error('Audio unavailable');
-  return context.decodeAudioData(await response.arrayBuffer());
-}
-
-function playClip(buffer, target, start, duration) {
-  const source = beatContext.createBufferSource();
-  source.buffer = buffer;
-  source.connect(target);
-  source.start(start, 0, duration);
-  return source;
 }
 
 beatButtons.forEach((button, index) => {
@@ -393,37 +381,15 @@ beatButtons.forEach((button, index) => {
     stopBeat();
     if (wasPlaying) return;
     audio.pause();
-    const request = {button};
+    const player = new Audio('muestras/' + beatClips[index] + '.mp3');
+    const request = {button, player};
     activeBeat = request;
     button.setAttribute('aria-pressed', 'true');
     $('beatStatus').textContent = 'Cargando el fragmento…';
+    player.onended = () => { if (activeBeat === request) stopBeat(); };
     try {
-      if (!beatContext) {
-        beatContext = new AudioContext();
-        beatGain = beatContext.createGain();
-        beatGain.gain.value = 0.72;
-        beatGain.connect(beatContext.destination);
-      }
-      await beatContext.resume();
-      beatBuffer ??= loadClip(beatContext, beatOriginal).catch(error => {
-        beatBuffer = undefined;
-        throw error;
-      });
-      if (index) drumBuffer ??= loadClip(beatContext, 'muestras/bateria-demo.wav').catch(error => {
-        drumBuffer = undefined;
-        throw error;
-      });
-      const [original, drums] = await Promise.all([beatBuffer, index ? drumBuffer : null]);
+      await player.play();
       if (activeBeat !== request) return;
-      const start = beatContext.currentTime + 0.05;
-      const duration = Math.min(4 * 4 * 60 / 86, original.duration);
-      beatSource = playClip(original, beatGain, start, duration);
-      if (drums) drumSource = playClip(drums, beatContext.destination, start, duration);
-      beatSource.onended = () => {
-        if (activeBeat !== request) return;
-        beatSource = drumSource = undefined;
-        stopBeat();
-      };
       $('beatStatus').textContent = 'Reproduciendo ' + (index ? 'el fragmento con batería añadida.' : 'la idea original.');
     } catch {
       if (activeBeat !== request) return;
