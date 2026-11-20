@@ -31,7 +31,14 @@ header.top nav a:hover{color:var(--cream)}
 .btn.ghost{background:transparent;color:var(--cream);border:1px solid #4a3f37}
 .btn.small{padding:9px 16px;font-size:14px}
 .btn:disabled{opacity:.6;cursor:wait;transform:none}
-.hero{padding:70px 0 40px;text-align:center;position:relative;overflow:hidden}
+.hero{padding:70px 0 60px;text-align:center;position:relative;overflow:hidden;isolation:isolate}
+.hero .shot{position:absolute;z-index:-2;right:-14vw;top:120px;width:min(1500px,96vw);transform:perspective(1600px) rotateY(-16deg) rotateX(4deg);transform-origin:right center;
+  opacity:.5;filter:blur(1.2px) saturate(.9) brightness(.75);border-radius:18px;box-shadow:0 40px 120px rgba(0,0,0,.8);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%,#000 78%,transparent 100%),linear-gradient(180deg,#000 55%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0%,#000 32%,#000 78%,transparent 100%),linear-gradient(180deg,#000 55%,transparent 100%);mask-composite:intersect}
+.hero .visor{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 34% 38% at 50% 30%,rgba(13,11,10,.92),rgba(13,11,10,.55) 60%,transparent 100%),
+             linear-gradient(180deg,rgba(13,11,10,.55),rgba(13,11,10,.2) 40%,rgba(13,11,10,.85) 92%,var(--bg))}
 .hero:before{content:"";position:absolute;inset:-40% -10% auto;height:120%;background:radial-gradient(closest-side,rgba(200,22,31,.22),transparent);pointer-events:none}
 .hero img{width:min(240px,55vw);filter:drop-shadow(0 18px 40px rgba(200,22,31,.25));position:relative}
 .hero h1{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(46px,9vw,92px);line-height:.95;margin:18px 0 10px;letter-spacing:2px;position:relative}
@@ -46,7 +53,14 @@ h2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(34px,5vw,
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
 .card h3{margin:0 0 6px;font-size:17px}
 .card p{margin:0;color:var(--dim);font-size:15px}
-.card .ico{font-size:26px;margin-bottom:8px}
+.card .ico{width:46px;height:46px;margin-bottom:12px;color:var(--red2);filter:drop-shadow(0 3px 6px rgba(200,22,31,.45)) drop-shadow(0 8px 18px rgba(0,0,0,.6))}
+.card .ico svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:10px}
+.feat{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:border-color .2s,transform .2s}
+.feat:hover{border-color:#5a2420;transform:translateY(-2px)}
+.feat .ico{flex:none;width:38px;height:38px;color:var(--red2);filter:drop-shadow(0 3px 6px rgba(200,22,31,.45)) drop-shadow(0 6px 14px rgba(0,0,0,.6))}
+.feat .ico svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feat b{display:block;font-size:15.5px;margin-bottom:2px}.feat span{color:var(--dim);font-size:14px;line-height:1.5}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .tags span{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;color:var(--dim)}
 .steps{counter-reset:s;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
@@ -93,10 +107,10 @@ footer a{color:var(--dim)}
 <body>
 <header class="top"><div class="wrap">
   <img src="logo.png" alt=""><b>BRAVO MELODY COMPOSER</b>
-  <nav><a class="hide" href="#escucha">Escuchar</a><a class="hide" href="#como">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
+  <nav><a class="hide" href="#escucha">Escuchar</a><a class="hide" href="#funciones">Funciones</a><a class="hide" href="#como">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
 </div></header>
 
-<div class="hero"><div class="wrap">
+<div class="hero"><img class="shot" src="plugin.jpg" alt="" aria-hidden="true"><div class="visor"></div><div class="wrap">
   <img src="logo.png" alt="Bravo Melody Composer">
   <h1>Ideas para tus beats<br><span>en segundos</span></h1>
   <p class="lead">Un plugin VST3 para FL Studio, Ableton, Cubase, Studio One, Reaper y cualquier programa con VST3, que te crea melodías, acordes, bajos y baterías listos para usar. Eliges el género y el ánimo, pulsas Generar y arrastras el MIDI a tu proyecto.</p>
@@ -106,7 +120,7 @@ footer a{color:var(--dim)}
 
 <section id="escucha"><div class="wrap">
   <h2>Escucha lo que crea</h2>
-  <p class="sub">Ideas reales generadas con Bravo Melody Composer y guardadas tal cual salieron: melodía, acordes y bajo, con los sonidos del plugin.</p>
+  <p class="sub">Ideas reales generadas con el plugin, tal cual salieron: melodía, acordes y bajo con sus sonidos grabados.</p>
   <div class="samples" id="samples"></div>
 </div></section>
 
@@ -114,12 +128,32 @@ footer a{color:var(--dim)}
   <h2>Se acabó el bloqueo creativo</h2>
   <p class="sub">Todo lo que necesitas para empezar un beat, hecho a la medida del género que produces.</p>
   <div class="grid">
-    <div class="card"><div class="ico">🎹</div><h3>Melodía, acordes, bajo y batería</h3><p>Cada idea trae sus partes coordinadas en la misma tonalidad. Cambia una sola parte si no te convence.</p></div>
-    <div class="card"><div class="ico">🔥</div><h3>Suena al género</h3><p>Cada estilo tiene su propio ritmo, sus progresiones y su forma de bajo: un drill no suena a un reggaetón.</p></div>
-    <div class="card"><div class="ico">🎭</div><h3>Ánimos</h3><p>Oscuro, triste, épico, soñador, tenso, terror, árabe… El ánimo cambia los acordes y la melodía.</p></div>
-    <div class="card"><div class="ico">💾</div><h3>Tu biblioteca de ideas</h3><p>Guarda las ideas que te gustan, escúchalas con sonidos y arrástralas a tu proyecto cuando las necesites.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/><path d="M9 10l11-2"/></svg></div><h3>Melodía, acordes, bajo y batería</h3><p>Cada idea trae sus partes coordinadas en la misma tonalidad. Cambia una sola parte si no te convence.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-4 0-6.5-2.7-6.5-6.2 0-3.6 3-5.6 3.6-9.3 2.6 1.7 3.4 4 3.2 6.1 1-.8 1.7-2 1.9-3.4 2.1 1.9 3.3 4.2 3.3 6.6C17.5 18.3 15.8 21 12 21z"/><path d="M12 21c-1.6 0-2.7-1.1-2.7-2.6 0-1.7 1.4-2.6 1.8-4.2 1.8 1.1 3.6 2.4 3.6 4.4 0 1.4-1.1 2.4-2.7 2.4z"/></svg></div><h3>Suena al género</h3><p>Cada estilo tiene su propio ritmo, sus progresiones y su forma de bajo: un drill no suena a un reggaetón.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c3 1.2 6 1.2 9 0 3 1.2 6 1.2 9 0v5c0 5.5-4 9-9 10-5-1-9-4.5-9-10z"/><path d="M7.5 10.5c.8-.6 1.9-.6 2.7 0M13.8 10.5c.8-.6 1.9-.6 2.7 0"/><path d="M9 15c1.8 1.4 4.2 1.4 6 0"/></svg></div><h3>Ánimos</h3><p>Oscuro, triste, épico, soñador, tenso, terror, árabe… El ánimo cambia los acordes y la melodía.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.2 4.6l3.8-1 3.6 15.4-3.8 1z" transform="translate(-2 1)"/></svg></div><h3>Tu biblioteca de ideas</h3><p>Guarda las ideas que te gustan, escúchalas con sonidos y arrástralas a tu proyecto cuando las necesites.</p></div>
   </div>
   <div class="tags"><span>Trap</span><span>Rap</span><span>Drill</span><span>Reggaetón</span><span>Dancehall</span><span>Afrobeat</span><span>R&amp;B</span><span>Soul</span><span>Lo-fi</span><span>Jazz</span><span>Pop</span><span>Balada</span><span>Cinemático</span><span>Merengue</span><span>Perico ripiao</span><span>Funk brasileño</span><span>Electrónica</span><span>Árabe</span></div>
+</div></section>
+
+<section id="funciones"><div class="wrap">
+  <h2>Todo lo que trae</h2>
+  <p class="sub">Pensado para producir rápido, sin perder el control.</p>
+  <div class="feats">
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9c-2-4-6-6-9-5 2 1 3.5 3 4 6"/><path d="M12 9c2-4 6-6 9-5-2 1-3.5 3-4 6"/><path d="M7 10c0 5 2 9 5 11 3-2 5-6 5-11-1.6-.8-3.3-1.2-5-1.2S8.6 9.2 7 10z"/></svg></div><div><b>Más de 35 géneros</b><span>Trap, drill, reggaetón, dembow, afrobeat, amapiano, R&amp;B, lo-fi, merengue, perico ripiao, funk brasileño…</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c3 1.2 6 1.2 9 0 3 1.2 6 1.2 9 0v5c0 5.5-4 9-9 10-5-1-9-4.5-9-10z"/><path d="M7.5 10.5c.8-.6 1.9-.6 2.7 0M13.8 10.5c.8-.6 1.9-.6 2.7 0"/><path d="M9 15c1.8 1.4 4.2 1.4 6 0"/></svg></div><div><b>15 ánimos</b><span>Oscuro, triste, épico, soñador, tenso, terror, árabe… cambian acordes y melodía.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 5v14M13 13l3 2-3 2z"/></svg></div><div><b>Idea o canción completa</b><span>Una idea de 4 a 16 compases o una canción con sus partes.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="5.5" height="10" rx="1.5"/><rect x="9.25" y="5" width="5.5" height="14" rx="1.5"/><rect x="16" y="7" width="5.5" height="10" rx="1.5"/></svg></div><div><b>Tres opciones: A, B y C</b><span>Cada vez que generas tienes tres ideas distintas para elegir.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v6"/><path d="M14 3v4h4"/><path d="M7 3v14h5"/><path d="M15 14l6 6M21 15v5h-5"/></svg></div><div><b>Arrastra el MIDI a tu DAW</b><span>Toda la idea o cada parte (voz, acordes, bajo) directo a tu proyecto.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h2l2-6 3 12 3-15 3 18 3-12 2 3h2"/></svg></div><div><b>Arrastra el WAV</b><span>Exporta el audio de la idea o de una parte con los sonidos del plugin.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l3 3-3 3"/><path d="M4 11V9a4 4 0 0 1 4-4h12"/><path d="M7 22l-3-3 3-3"/><path d="M20 13v2a4 4 0 0 1-4 4H4"/></svg></div><div><b>Tus loops, al tono de la idea</b><span>Pon un loop de tu carpeta: se ajusta al tempo y se transporta al tono que eligió el plugin.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg></div><div><b>Candados por parte</b><span>Fija la voz, los acordes o el bajo y genera solo lo demás.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></div><div><b>Transformar</b><span>Pide otra versión, cambia la densidad, el registro o el desarrollo de cada parte.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20V4M8 4L4 8M8 4l4 4"/><path d="M16 4v16M16 20l-4-4M16 20l4-4"/></svg></div><div><b>Octava y tono al instante</b><span>Sube o baja la octava de cada parte o cambia el tono sin perder la idea.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 8.2l5-.7z"/></svg></div><div><b>Tres motores</b><span>Bravo (rápido), Ley y Magenta (inteligencia artificial) para ideas diferentes.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></div><div><b>77 sonidos grabados</b><span>Pianos, cuerdas staccato, trompeta, baby bass, 808, guitarras… para escuchar al momento.</span></div></div>
+    <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.2 4.6l3.8-1 3.6 15.4-3.8 1z" transform="translate(-2 1)"/></svg></div><div><b>Biblioteca de ideas</b><span>Guarda tus favoritas con su loop y recupéralas tal como estaban.</span></div></div>
+  </div>
 </div></section>
 
 <section id="como"><div class="wrap">
@@ -213,7 +247,7 @@ const db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:
 const $=id=>document.getElementById(id);
 $('year').textContent=new Date().getFullYear();
 // muestras: ideas guardadas por Ley Produce, renderizadas con los sonidos del plugin
-const SAMPLES=[{"f": "01-funk_bh", "g": "Funk BH", "m": "Nostálgico", "k": "Cm", "t": 130}, {"f": "02-trap", "g": "Trap", "m": "Oscuro", "k": "Gm", "t": 90}, {"f": "03-drill", "g": "Drill", "m": "Alegre", "k": "Ebm", "t": 94}, {"f": "04-afro_dancehall", "g": "Afro-dancehall", "m": "Energético", "k": "Am", "t": 106}, {"f": "05-ballad", "g": "Balada", "m": "Nostálgico", "k": "D", "t": 105}, {"f": "06-afrobeat", "g": "Afrobeats", "m": "", "k": "Ebm", "t": 105}, {"f": "07-african_reggae", "g": "Reggae africano", "m": "", "k": "Am", "t": 103}, {"f": "08-afrobeat_classic", "g": "Afrobeat clásico", "m": "Nostálgico", "k": "Ebm", "t": 98}, {"f": "09-reggaeton", "g": "Reggaetón", "m": "", "k": "Ebm", "t": 98}, {"f": "10-hyperpop", "g": "Hyperpop", "m": "", "k": "Cm", "t": 140}, {"f": "11-funk_zoeira", "g": "Zoeira / Zona Norte", "m": "Plano", "k": "F#m", "t": 93}, {"f": "12-bruxaria", "g": "Bruxaria", "m": "Plano", "k": "F#m", "t": 93}, {"f": "13-amapiano", "g": "Amapiano", "m": "Energético", "k": "C#m", "t": 93}, {"f": "14-rap", "g": "Rap", "m": "Triste", "k": "Am", "t": 94}, {"f": "15-alte", "g": "Alte", "m": "Nostálgico", "k": "Ebm", "t": 101}, {"f": "16-pop", "g": "Pop", "m": "Terror", "k": "Ebm", "t": 120}];
+const SAMPLES=[{"f": "02-trap", "g": "Trap", "m": "Oscuro", "k": "Gm", "t": 90}, {"f": "06-afrobeat", "g": "Afrobeats", "m": "", "k": "Ebm", "t": 105}, {"f": "n02-drill", "g": "Drill", "m": "Alegre", "k": "Ebm", "t": 94}, {"f": "n04-afrobeat_classic", "g": "Afrobeat clásico", "m": "", "k": "Ebm", "t": 98}, {"f": "n05-hyperpop", "g": "Hyperpop", "m": "Cansado", "k": "C#m", "t": 93}, {"f": "n06-rap", "g": "Rap", "m": "Triste", "k": "Am", "t": 94}, {"f": "n07-african_reggae", "g": "Reggae africano", "m": "Romántico", "k": "Fm", "t": 101}, {"f": "n08-amapiano", "g": "Amapiano", "m": "Soñador", "k": "F#m", "t": 101}, {"f": "n09-pop", "g": "Pop", "m": "Terror", "k": "Ebm", "t": 84}, {"f": "n10-brazilian_funk", "g": "Funk brasileño", "m": "Alegre", "k": "Am", "t": 113}, {"f": "n11-afro_dancehall", "g": "Afro-dancehall", "m": "Triste", "k": "Am", "t": 155}, {"f": "n12-dancehall", "g": "Dancehall", "m": "Romántico", "k": "Eb", "t": 90}, {"f": "n13-minimalist", "g": "Minimalista", "m": "Nostálgico", "k": "Am", "t": 90}, {"f": "n15-alte", "g": "Alte", "m": "Terror", "k": "Am", "t": 90}, {"f": "n16-reggaeton", "g": "Reggaetón", "m": "Terror", "k": "Fm", "t": 90}, {"f": "n17-lofi", "g": "Lo-fi", "m": "", "k": "C", "t": 94}, {"f": "n18-ballad", "g": "Balada", "m": "Terror", "k": "Fm", "t": 113}];
 (function(){
   const box=$('samples');const audio=new Audio();audio.preload='none';let current=null;
   for(const x of SAMPLES){
