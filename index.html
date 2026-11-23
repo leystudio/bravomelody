@@ -42,14 +42,14 @@ header.top nav a:hover{color:var(--cream)}
 .hero-art{position:relative}
 .generate-orbits{
   position:absolute;z-index:-1;left:50%;top:50%;width:182%;aspect-ratio:1;
-  transform:translate(-50%,-50%) scaleY(.82);pointer-events:none;filter:blur(3.6px);
+  transform:translate(-50%,-50%);pointer-events:none;filter:blur(3.6px);
   mask-image:linear-gradient(90deg,transparent,#0009 14%,#000 33%);
   --stroke:clamp(11px,1.35vw,20px);
 }
 .generate-orbits i{
   position:absolute;inset:var(--inset);border-radius:50%;
   background:conic-gradient(#772938 0 var(--arc),transparent var(--arc) 180deg,#772938 180deg 232deg,transparent 232deg);
-  mask-image:radial-gradient(closest-side,transparent calc(100% - var(--stroke)),#000 calc(100% - var(--stroke) + 1px),#000 99%,transparent);
+  mask-image:radial-gradient(circle closest-side,transparent calc(100% - var(--stroke)),#000 calc(100% - var(--stroke) + 1px),#000 99%,transparent);
   transform:rotate(var(--phase));animation:generate-orbit var(--period) linear infinite;
 }
 .generate-orbits i:nth-child(1){--inset:8%;--arc:92deg;--phase:18deg;--period:86s;opacity:.59}
