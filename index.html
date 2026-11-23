@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bravo Melody Composer · Empieza tu próximo beat</title>
-<meta name="description" content="Genera melodías, acordes y bajos editables para tus beats. Plugin VST3 para Windows. Pruébalo gratis 14 días, sin tarjeta.">
+<meta name="description" content="Genera melodías, acordes y bajos editables para tus beats en Windows y Mac (beta estable). Pruébalo gratis 14 días, sin tarjeta.">
 <meta property="og:title" content="Bravo Melody Composer">
 <meta property="og:description" content="Genera melodías, acordes y bajos en tu estilo. Edita tu idea y llévala a FL Studio. 14 días gratis.">
 <meta property="og:image" content="compartir.jpg">
@@ -101,7 +101,14 @@ input:focus{outline:2px solid var(--red);outline-offset:1px}
 .msg.bad{color:#ff7b7b}.msg.ok{color:var(--ok)}
 .done{display:none;text-align:left}
 .done h3{margin-top:0}
-.done ol{padding-left:20px;color:var(--dim)}
+.downloads{margin-top:14px}
+.downloads summary{color:var(--cream);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.downloads h3{font-size:17px;margin:18px 0 10px}
+.downloads ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.downloads li a{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px 12px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);text-decoration:none}
+.downloads li a:hover,.downloads li a:focus-visible{border-color:var(--red)}
+.downloads li b{color:var(--cream)}
+.downloads li small,.downloads p{color:var(--dim);font-size:14px}
 .faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
 .faq summary{cursor:pointer;font-weight:600}
 .faq p{color:var(--dim);margin:10px 0 0}
@@ -163,7 +170,7 @@ footer a{color:var(--dim)}
     <h1>Empieza tu beat. <span>Hazlo tuyo.</span></h1>
     <p class="lead">Genera melodías, acordes y bajos en tu estilo. Quédate con las partes que te gustan, cambia las demás y arrastra el MIDI a FL Studio.</p>
     <div class="cta"><a class="btn red" href="#prueba">Probar gratis 14 días</a><a class="btn ghost" href="#escucha">Escuchar demo</a></div>
-    <small>Windows · VST3 · Sin tarjeta</small>
+    <small>Windows y Mac (beta estable) · Sin tarjeta</small>
   </div>
   <figure>
     <div class="hero-art">
@@ -233,12 +240,12 @@ footer a{color:var(--dim)}
 </div></section>
 
 <section id="como"><div class="wrap">
-  <h2>Instala y prueba en tu PC</h2>
-  <p class="sub">Plugin VST3 para Windows. Puedes usarlo con FL Studio, Ableton Live, Cubase, Studio One, Reaper y otros programas compatibles con VST3.</p>
+  <h2>Instala Bravo en Windows o Mac</h2>
+  <p class="sub">Usa el VST3 en FL Studio y otros programas compatibles. La beta estable de Mac incluye también Audio Unit.</p>
   <div class="steps">
     <div class="card"><h3>Crea tu cuenta</h3><p>Regístrate con correo y contraseña. Tus 14 días empiezan al crear la cuenta.</p></div>
-    <div class="card"><h3>Descarga el instalador</h3><p>Descarga el ZIP (aprox. 706 MB), extráelo y ejecuta «Instalar.bat» con tu programa de música cerrado.</p></div>
-    <div class="card"><h3>Abre Bravo Melody Composer</h3><p>Busca «BMC - Bravo Melody Composer» en tus plugins VST3, inicia sesión y genera tu primera idea.</p></div>
+    <div class="card"><h3>Elige tu descarga</h3><p>En Windows, extrae el ZIP y ejecuta «Instalar.bat». En Mac, elige Apple Silicon o Intel y sigue la guía incluida para instalar VST3 o Audio Unit. Cierra antes tu programa de música.</p></div>
+    <div class="card"><h3>Abre Bravo Melody Composer</h3><p>Actualiza la lista de instrumentos de tu programa, busca «BMC - Bravo Melody Composer», inicia sesión y genera tu primera idea.</p></div>
   </div>
 </div></section>
 
@@ -246,7 +253,7 @@ footer a{color:var(--dim)}
   <div>
     <h2>Pruébalo gratis 14 días</h2>
     <p class="sub">Sin tarjeta ni cobro automático. Puedes usar tus ideas en tus propios beats, también para venderlos.</p>
-    <p class="trust-note">Para Windows. <a href="#como">Ver el tamaño del instalador y cómo instalarlo</a>. Cuando guardas una idea en la biblioteca, Bravo envía una copia del MIDI a tu cuenta. <a href="privacidad.html">Cómo guardamos tus datos</a>.</p>
+    <p class="trust-note"><a href="#como">Cómo instalar Bravo en Windows o Mac</a>. Cuando guardas una idea en la biblioteca, Bravo envía una copia del MIDI a tu cuenta. <a href="privacidad.html">Cómo guardamos tus datos</a>.</p>
     <div class="card">
       <form id="signup" autocomplete="on">
         <div class="row"><label for="name">Nombre artístico (opcional)</label><input id="name" type="text" maxlength="80" autocomplete="nickname"></div>
@@ -260,17 +267,19 @@ footer a{color:var(--dim)}
       <div class="done" id="done">
         <h3>¡Listo! Tu prueba de 14 días empezó 🎉</h3>
         <p>Cuenta: <b id="doneEmail"></b></p>
-        <a class="btn red" id="dl" href="#" target="_blank" rel="noopener" style="width:100%">Descargar el instalador</a>
         <p class="paynote" id="confirmNote" role="status"></p>
-        <p class="paynote" id="dlNote" role="status"></p>
-        <ol>
-          <li>Descarga el archivo .zip y descomprímelo (clic derecho → «Extraer todo»).</li>
-          <li>Cierra tu programa de música y haz doble clic en «Instalar.bat», dentro de la carpeta «Bravo Melody Composer».</li>
-          <li>Abre tu programa de música, añade el plugin «BMC - Bravo Melody Composer» (si no aparece, busca plugins nuevos) y entra con tu correo y tu contraseña.</li>
-        </ol>
       </div>
     </div>
-    <p class="paynote">¿Ya tienes cuenta? Descarga la última versión <a href="#" id="dlAgain">aquí</a>.</p>
+    <details id="descargas" class="downloads">
+      <summary id="downloadSummary">¿Ya tienes cuenta? Descargar Bravo</summary>
+      <h3>Elige tu versión de Bravo 3.14.5</h3>
+      <ul aria-label="Descargas por sistema">
+        <li><a href="https://drive.usercontent.google.com/download?id=1vrwFbKGdqtPfqagTujo3tvTwPpYaJh4e&amp;export=download&amp;confirm=t"><b>Descargar para Windows</b><small>VST3 · 706 MB</small></a></li>
+        <li><a href="https://drive.usercontent.google.com/download?id=1bzE7qPdkRXWIoEQJMR6EgRS3zDJOmchf&amp;export=download&amp;confirm=t"><b>Descargar para Mac · Apple Silicon</b><small>VST3 + AU · 50 MB</small></a></li>
+        <li><a href="https://drive.usercontent.google.com/download?id=1KnjT3_vbhPBTol_hZr3ihAa5ijEi95E6&amp;export=download&amp;confirm=t"><b>Descargar para Mac · Intel</b><small>VST3 + AU · 51 MB</small></a></li>
+      </ul>
+      <p>Para elegir tu beta estable de Mac, abre el menú Apple () y entra en «Acerca de este Mac». Si aparece un chip de la serie M, elige Apple Silicon. Si aparece un procesador Intel, elige Intel.</p>
+    </details>
   </div>
 
   <div id="precio">
@@ -298,7 +307,7 @@ footer a{color:var(--dim)}
 
 <section id="preguntas" class="faq"><div class="wrap">
   <h2>Preguntas</h2>
-  <details><summary>¿En qué programas funciona?</summary><p>En cualquier programa de Windows que use plugins VST3: FL Studio, Ableton Live, Cubase, Studio One, Reaper, Bitwig y otros. Por ahora no hay versión para Mac.</p></details>
+  <details><summary>¿En qué programas funciona?</summary><p>En Windows, Bravo usa VST3 para estaciones como FL Studio, Ableton Live, Cubase, Studio One y Reaper. En Mac puedes descargar la beta estable para Apple Silicon o Intel. Ambas incluyen VST3 y Audio Unit (AU).</p></details>
   <details><summary>¿Qué pasa cuando termina la prueba?</summary><p>Tus ideas guardadas siguen ahí: puedes abrirlas y escucharlas. Para seguir generando ideas nuevas, compra la licencia y la activamos en tu misma cuenta.</p></details>
   <details><summary>¿Necesito internet?</summary><p>Para entrar con tu cuenta y, después, al menos una vez cada 14 días. Puedes trabajar sin conexión entre medias.</p></details>
   <details><summary>¿Las ideas son mías?</summary><p>Sí. Puedes usar las melodías, acordes y bajos que generes en tus canciones y beats, también para venderlos, sin pagar regalías.</p></details>
@@ -324,6 +333,11 @@ const PAYPAL='leyproduce@gmail.com',PRICE='29.00',TERMS_VERSION='2';
 if(/type=recovery|error_description/.test(location.hash))location.replace('cambiar-clave.html'+location.hash);
 const db=window.supabase?.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:false}});
 const $=id=>document.getElementById(id);
+function showLinkedDownloads(){
+  if(location.hash==='#descargas') $('descargas').open=true;
+}
+showLinkedDownloads();
+window.addEventListener('hashchange',showLinkedDownloads);
 $('year').textContent=new Date().getFullYear();
 // muestras: ideas guardadas por Ley Produce, renderizadas con los sonidos del plugin
 const SAMPLES=[{"f": "v14-trap", "g": "Trap", "m": "Nostálgico", "k": "Fm", "t": 120}, {"f": "v13-drill", "g": "Drill", "m": "Tenso", "k": "Bb", "t": 150}, {"f": "06-afrobeat", "g": "Afrobeats", "m": "", "k": "Ebm", "t": 105}, {"f": "v12-afrobeat_classic", "g": "Afrobeat clásico", "m": "Romántico", "k": "Em", "t": 110}, {"f": "reggaeton-95-original", "g": "Reggaetón", "m": "", "k": "Fa♯ menor", "t": 95}, {"f": "v10-rap", "g": "Rap", "m": "Nostálgico", "k": "C#", "t": 92}, {"f": "v08-amapiano", "g": "Amapiano", "m": "Épico", "k": "C#", "t": 92}, {"f": "v05-afro_dancehall", "g": "Afro-dancehall", "m": "Épico", "k": "C#", "t": 98}, {"f": "v09-african_reggae", "g": "Reggae africano", "m": "Épico", "k": "C#", "t": 92}, {"f": "v06-brazilian_funk", "g": "Funk brasileño", "m": "Épico", "k": "C#", "t": 126}, {"f": "v07-pop", "g": "Pop", "m": "Épico", "k": "C#", "t": 126}, {"f": "v11-hyperpop", "g": "Hyperpop", "m": "Energético", "k": "Em", "t": 135}, {"f": "v03-alte", "g": "Alte", "m": "Energético", "k": "Gm", "t": 99}, {"f": "v01-lofi", "g": "Lo-fi", "m": "Soñador", "k": "Bb", "t": 70}, {"f": "v04-minimalist", "g": "Minimalista", "m": "Cansado", "k": "C#m", "t": 99}, {"f": "g-ballad", "g": "Balada", "m": "", "k": "Fm", "t": 75}];
@@ -444,13 +458,6 @@ beatButtons.forEach((button, index) => {
   });
 });
 
-let download=null;
-async function latest(){if(download)return download;try{const {data}=await db.rpc('bmc_latest_download');if(data?.download_url)download=data;return data;}catch{return null;}}
-function setDownload(){latest().then(d=>{
-  if(d&&d.download_url){$('dl').href=d.download_url;$('dlNote').textContent='Versión '+d.version;}
-  else{$('dl').href='mailto:'+PAYPAL+'?subject=Enlace%20de%20descarga%20Bravo%20Melody%20Composer';$('dl').textContent='Pedir el enlace de descarga';$('dlNote').textContent='El enlace de descarga aún no está publicado: escríbenos y te lo enviamos.';}
-});}
-$('dlAgain').onclick=async e=>{e.preventDefault();const d=await latest();if(d&&d.download_url)window.open(d.download_url,'_blank','noopener');else location.href='mailto:'+PAYPAL+'?subject=Enlace%20de%20descarga';};
 function say(text,bad){$('signupMsg').textContent=text;$('signupMsg').className='msg '+(bad?'bad':'ok');}
 $('signup').onsubmit=async e=>{
   e.preventDefault();
@@ -478,7 +485,9 @@ $('signup').onsubmit=async e=>{
   if(data&&data.user&&Array.isArray(data.user.identities)&&data.user.identities.length===0)return say('Ese correo ya tiene una cuenta. Entra con él en el plugin.',true);
   $('signup').style.display='none';$('done').style.display='block';$('doneEmail').textContent=email;$('buyEmail').value=email;
   if(!data.session){$('confirmNote').textContent='Te enviamos un correo para confirmar tu cuenta: ábrelo antes de entrar en el plugin.';}
-  setDownload();
+  $('downloadSummary').textContent='Descargar Bravo';
+  $('descargas').open=true;
+  $('downloadSummary').focus();
 };
 $('buy').onsubmit=e=>{
   e.preventDefault();const email=$('buyEmail').value.trim().toLowerCase();if(!email)return;
