@@ -31,7 +31,7 @@ header.top nav a:hover{color:var(--cream)}
 .btn.ghost{background:transparent;color:var(--cream);border:1px solid #4a3f37}
 .btn.small{padding:9px 16px;font-size:14px}
 .btn:disabled{opacity:.6;cursor:wait;transform:none}
-.hero{padding:clamp(32px,6vw,78px) 0;background:radial-gradient(ellipse at 78% 28%,#402019 0%,transparent 58%)}
+.hero{padding:clamp(32px,6vw,78px) 0;background:radial-gradient(ellipse at 78% 28%,#402019 0%,transparent 58%);isolation:isolate;overflow:clip}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,52px)}
 .hero h1{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(48px,6.2vw,78px);line-height:.95;margin:0 0 16px;letter-spacing:1px}
 .hero h1 span{display:block;color:#ff6469}
@@ -39,6 +39,22 @@ header.top nav a:hover{color:var(--cream)}
 .hero .cta{display:flex;gap:10px;flex-wrap:wrap}
 .hero small{display:block;margin-top:12px;color:var(--dim)}
 .hero figure{margin:0}
+.hero-art{position:relative}
+.generate-orbits{
+  position:absolute;z-index:-1;left:83%;top:47%;width:clamp(480px,54vw,840px);aspect-ratio:1;
+  transform:translate(-50%,-50%);pointer-events:none;filter:blur(2.8px) drop-shadow(0 0 11px #c0394a55);
+  --stroke:clamp(7px,.88vw,13px);
+}
+.generate-orbits i{
+  position:absolute;inset:var(--inset);border-radius:50%;
+  background:conic-gradient(#c0394a 0 var(--arc),transparent var(--arc) 180deg,#c0394a 180deg 232deg,transparent 232deg);
+  mask-image:radial-gradient(closest-side,transparent calc(100% - var(--stroke)),#000 calc(100% - var(--stroke) + 1px),#000 99%,transparent);
+  transform:rotate(var(--phase));animation:generate-orbit var(--period) linear infinite;
+}
+.generate-orbits i:nth-child(1){--inset:10%;--arc:92deg;--phase:18deg;--period:108s;opacity:.64}
+.generate-orbits i:nth-child(2){--inset:5%;--arc:120deg;--phase:50deg;--period:68s;opacity:.52;animation-direction:reverse}
+.generate-orbits i:nth-child(3){--inset:0%;--arc:149deg;--phase:-30deg;--period:50s;opacity:.45}
+@keyframes generate-orbit{from{transform:rotate(var(--phase))}to{transform:rotate(calc(var(--phase) + 1turn))}}
 .plugin-shot{display:block;width:100%;height:auto;border-radius:14px;border:1px solid #514039;box-shadow:0 18px 48px #0009}
 .hero figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;margin-top:10px;color:var(--dim);font-size:13px}
 .hero figcaption a{font-weight:600;text-underline-offset:3px}
@@ -48,6 +64,8 @@ header.top nav a:hover{color:var(--cream)}
 html{scroll-padding-top:75px}
 :focus-visible{outline:2px solid #ff777b;outline-offset:3px}
 @media(max-width:790px){.hero .wrap{grid-template-columns:1fr}.hero h1{max-width:14ch}}
+@media(max-width:790px){.generate-orbits{left:79%;top:43%;width:112%;--stroke:clamp(5px,1.4vw,9px);filter:blur(2px) drop-shadow(0 0 8px #c0394a44)}}
+@media(prefers-reduced-motion:reduce){.generate-orbits i{animation:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 section{padding:60px 0;border-top:1px solid var(--line)}
 h2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(34px,5vw,48px);letter-spacing:1px;margin:0 0 8px}
@@ -148,7 +166,10 @@ footer a{color:var(--dim)}
     <small>Windows · VST3 · Sin tarjeta</small>
   </div>
   <figure>
-    <img class="plugin-shot" src="bravo-melody-interfaz.webp" width="1250" height="875" alt="Bravo Melody Composer en FL Studio. El botón Generar idea y las versiones A, B y C están sobre las pistas de voz, acordes y bajo.">
+    <div class="hero-art">
+      <div class="generate-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+      <img class="plugin-shot" src="bravo-melody-interfaz.webp" width="1250" height="875" alt="Bravo Melody Composer en FL Studio. El botón Generar idea y las versiones A, B y C están sobre las pistas de voz, acordes y bajo.">
+    </div>
     <figcaption>Bravo Melody Composer por Ley Produce <a href="#tutorial">Ver tutorial · 4:14</a></figcaption>
   </figure>
 </div></div>
