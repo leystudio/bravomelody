@@ -40,7 +40,10 @@ header.top nav a:hover{color:var(--cream)}
 .hero small{display:block;margin-top:12px;color:var(--dim)}
 .hero figure{margin:0}
 .plugin-shot{display:block;width:100%;height:auto;border-radius:14px;border:1px solid #514039;box-shadow:0 18px 48px #0009}
-.hero figcaption{margin-top:8px;color:var(--dim);font-size:13px}
+.hero figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;margin-top:10px;color:var(--dim);font-size:13px}
+.hero figcaption a{font-weight:600;text-underline-offset:3px}
+.tutorial-player{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#09080a;border:1px solid var(--line);border-radius:14px}
+.tutorial-link{display:inline-block;margin-top:10px;color:var(--dim);font-size:14px;text-underline-offset:3px}
 .hero .cta .btn{padding:12px 16px}
 html{scroll-padding-top:75px}
 :focus-visible{outline:2px solid #ff777b;outline-offset:3px}
@@ -105,12 +108,14 @@ footer a{color:var(--dim)}
 .workflow figure{margin:0}
 .workflow-screen{position:relative}
 .workflow-highlight{position:absolute;border:2px solid #fff2dd;box-shadow:0 0 0 3px #c8161f;border-radius:8px;pointer-events:none}
-.workflow-screen[data-step="0"] .workflow-highlight{left:47.5%;top:11%;width:10.5%;height:15%}
-.workflow-screen[data-step="1"] .workflow-highlight{left:63%;top:31%;width:3.2%;height:5.3%}
-.workflow-screen[data-step="2"] .workflow-highlight{left:40.6%;top:36.6%;width:8.7%;height:3.7%}
-.workflow-screen[data-step="3"] .workflow-highlight{left:60%;top:12%;width:5%;height:13%}
-.workflow-highlight.workflow-bass{display:none}
-.workflow-screen[data-step="2"] .workflow-bass{display:block;left:76.6%;top:31.6%;width:4.8%;height:3.8%}
+.workflow-screen[data-step="0"] .workflow-primary{left:46.8%;top:15.2%;width:14.5%;height:20.4%}
+.workflow-screen[data-step="1"] .workflow-primary{left:61.7%;top:42.3%;width:3.1%;height:4.8%}
+.workflow-screen[data-step="2"] .workflow-primary{left:62.9%;top:48.9%;width:12.7%;height:5.1%}
+.workflow-screen[data-step="3"] .workflow-primary{left:84.7%;top:22.4%;width:6.5%;height:9.5%}
+.workflow-bass,.workflow-version,.workflow-screen .transform-shot,.workflow-screen[data-step="2"] .base-shot{display:none}
+.workflow-screen[data-step="2"] .transform-shot{display:block}
+.workflow-screen[data-step="2"] .workflow-bass{display:block;left:87%;top:71.2%;width:9.8%;height:4.1%}
+.workflow-screen[data-step="2"] .workflow-version{display:block;left:57.1%;top:77.5%;width:19.7%;height:4.7%}
 .workflow-steps{display:grid;gap:8px}
 .workflow-step{text-align:left;display:block;width:100%;padding:12px 14px;background:var(--panel);color:var(--cream);border:1px solid var(--line);border-radius:10px;font:inherit;cursor:pointer}
 .workflow-step[aria-pressed=true]{border-color:#ff6469;background:#2b1716}
@@ -131,7 +136,7 @@ footer a{color:var(--dim)}
 <body>
 <header class="top"><div class="wrap">
   <img src="logo.png" alt=""><b>BRAVO MELODY COMPOSER</b>
-  <nav><a class="hide" href="#escucha">Escuchar</a><a class="hide" href="#flujo">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
+  <nav><a class="hide" href="#tutorial">Tutorial</a><a class="hide" href="#escucha">Escuchar</a><a class="hide" href="#flujo">Cómo funciona</a><a class="hide" href="#preguntas">Preguntas</a><a href="#precio">Precio</a><a class="btn red small" href="#prueba">Prueba gratis</a></nav>
 </div></header>
 
 <main>
@@ -143,10 +148,20 @@ footer a{color:var(--dim)}
     <small>Windows · VST3 · Sin tarjeta</small>
   </div>
   <figure>
-    <img class="plugin-shot" src="plugin.jpg" width="1600" height="1000" alt="Interfaz de Bravo Melody Composer con los controles de generación y las pistas de melodía, acordes y bajo.">
-    <figcaption>Bravo Melody Composer por Ley Produce</figcaption>
+    <img class="plugin-shot" src="bravo-melody-interfaz.webp" width="1250" height="875" alt="Bravo Melody Composer en FL Studio. El botón Generar idea y las versiones A, B y C están sobre las pistas de voz, acordes y bajo.">
+    <figcaption>Bravo Melody Composer por Ley Produce <a href="#tutorial">Ver tutorial · 4:14</a></figcaption>
   </figure>
 </div></div>
+
+<section id="tutorial" aria-labelledby="tutorial-titulo"><div class="wrap">
+  <h2 id="tutorial-titulo">Cómo usar Bravo Melody en FL Studio</h2>
+  <p class="sub">Crea una idea de trap a 120 BPM, cambia el bajo de un compás y lleva las notas al piano roll de FL Studio.</p>
+  <video id="tutorialVideo" class="tutorial-player" controls playsinline preload="none" width="1920" height="1080"
+         poster="tutorial-portada.webp" aria-labelledby="tutorial-titulo">
+    <source src="tutorial-bravo-melody.mp4" type="video/mp4">
+  </video>
+  <a class="tutorial-link" href="tutorial-bravo-melody.mp4">Abrir el video en MP4</a>
+</div></section>
 
 <section id="escucha"><div class="wrap">
   <h2>Escucha lo que crea</h2>
@@ -161,14 +176,16 @@ footer a{color:var(--dim)}
   <h2>De la primera idea a tu proyecto</h2>
   <div class="workflow">
     <figure class="workflow-screen" id="workflowScreen" data-step="0">
-      <img class="plugin-shot" src="plugin.jpg" width="1600" height="1000" loading="lazy" alt="Pantalla real del plugin. Cada paso resalta el control que se usa.">
-      <div class="workflow-highlight" aria-hidden="true"></div>
+      <img class="plugin-shot base-shot" src="bravo-melody-interfaz.webp" width="1250" height="875" loading="lazy" alt="Vista principal del plugin con el control del paso seleccionado resaltado.">
+      <img class="plugin-shot transform-shot" src="bravo-melody-transformar.webp" width="1250" height="875" loading="lazy" alt="Transformar abierto en el compás 2, con Bajo seleccionado y el botón Otra versión debajo.">
+      <div class="workflow-highlight workflow-primary" aria-hidden="true"></div>
       <div class="workflow-highlight workflow-bass" aria-hidden="true"></div>
+      <div class="workflow-highlight workflow-version" aria-hidden="true"></div>
     </figure>
     <div class="workflow-steps" role="group" aria-label="Pasos en el plugin">
       <button class="workflow-step" type="button" aria-pressed="true"><b>1. Genera en tu estilo</b><span>Elige género y ánimo, y pulsa Generar para oír melodía, acordes y bajo juntos.</span></button>
       <button class="workflow-step" type="button" aria-pressed="false"><b>2. Conserva los acordes</b><span>Activa el candado en Acordes. También puedes fijar la melodía.</span></button>
-      <button class="workflow-step" type="button" aria-pressed="false"><b>3. Cambia el bajo</b><span>Selecciona Bajo y usa Transformar para variar esa parte.</span></button>
+      <button class="workflow-step" type="button" aria-pressed="false"><b>3. Cambia el bajo</b><span>Selecciona un compás y abre Transformar. Elige Bajo y pulsa Otra versión.</span></button>
       <button class="workflow-step" type="button" aria-pressed="false"><b>4. Llévalo a tu proyecto</b><span>Arrastra el MIDI al piano roll de FL Studio para editar las notas.</span></button>
     </div>
   </div>
@@ -293,6 +310,7 @@ const SAMPLES=[{"f": "v14-trap", "g": "Trap", "m": "Nostálgico", "k": "Fm", "t"
 const featured = ['reggaeton-95-original', 'v13-drill', '06-afrobeat'];
 const audio = new Audio();
 audio.preload = 'none';
+const tutorial = $('tutorialVideo');
 let currentSample;
 
 function resetSample() {
@@ -314,6 +332,7 @@ function addSample(sample, destination) {
   button.setAttribute('aria-label', 'Escuchar ' + sample.g);
   card.addEventListener('click', async () => {
     $('audioStatus').textContent = '';
+    tutorial.pause();
     stopBeat();
     if (currentSample === item && !audio.paused) {
       audio.pause();
@@ -366,6 +385,10 @@ workflowSteps.forEach((step, index) => step.addEventListener('click', () => {
 const beatButtons = [$('rawBeat'), $('mixedBeat')];
 const beatClips = ['reggaeton-95-original', 'reggaeton-95-con-bateria'];
 let activeBeat;
+tutorial.addEventListener('play', () => {
+  audio.pause();
+  stopBeat();
+});
 
 function stopBeat() {
   const previous = activeBeat;
@@ -380,6 +403,7 @@ beatButtons.forEach((button, index) => {
     const wasPlaying = activeBeat?.button === button;
     stopBeat();
     if (wasPlaying) return;
+    tutorial.pause();
     audio.pause();
     const player = new Audio('muestras/' + beatClips[index] + '.mp3');
     const request = {button, player};
