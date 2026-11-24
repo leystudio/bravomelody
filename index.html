@@ -99,6 +99,10 @@ h2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(34px,5vw,
 form .row{margin-bottom:12px;text-align:left}
 label{display:block;font-size:14px;color:var(--dim);margin-bottom:4px}
 input[type=text],input[type=email],input[type=password]{width:100%;background:#0f0c0b;border:1px solid #3a312b;border-radius:10px;padding:12px 14px;color:var(--cream);font:16px Inter,sans-serif}
+.passwrap{position:relative}
+.passwrap input{padding-right:94px}
+.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--dim);cursor:pointer;font:14px Inter,sans-serif;padding:6px 8px;border-radius:6px}
+.eye:hover,.eye:focus-visible{color:var(--cream);text-decoration:underline}
 input:focus{outline:2px solid var(--red);outline-offset:1px}
 .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--dim);text-align:left}
 .check input{margin-top:4px;width:18px;height:18px;accent-color:var(--red);flex:none}
@@ -263,7 +267,7 @@ footer a{color:var(--dim)}
       <form id="signup" autocomplete="on">
         <div class="row"><label for="name">Nombre artístico (opcional)</label><input id="name" type="text" maxlength="80" autocomplete="nickname"></div>
         <div class="row"><label for="email">Correo</label><input id="email" type="email" required autocomplete="email"></div>
-        <div class="row"><label for="pass">Contraseña (mínimo 8 caracteres)</label><input id="pass" type="password" required minlength="8" autocomplete="new-password"></div>
+        <div class="row"><label for="pass">Contraseña (mínimo 8 caracteres)</label><div class="passwrap"><input id="pass" type="password" required minlength="8" autocomplete="new-password"><button type="button" class="eye" data-for="pass" aria-label="Mostrar contraseña">Mostrar</button></div></div>
         <div class="row check"><input id="terms" type="checkbox" required><label for="terms" style="margin:0">Acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos de uso</a> y la <a href="privacidad.html" target="_blank" rel="noopener">Política de privacidad</a>.</label></div>
         <div class="row check"><input id="offers" type="checkbox"><label for="offers">Quiero recibir ofertas por correo (opcional).</label></div>
         <button class="btn red" id="signupBtn" type="submit" style="width:100%">Empezar mi prueba gratis</button>
@@ -338,6 +342,8 @@ const PAYPAL='leyproduce@gmail.com',PRICE='29.00',TERMS_VERSION='2';
 if(/type=recovery|error_description/.test(location.hash))location.replace('cambiar-clave.html'+location.hash);
 const db=window.supabase?.createClient(SUPABASE_URL,SUPABASE_ANON,{auth:{persistSession:false}});
 const $=id=>document.getElementById(id);
+// Botón «ojo» para ver/ocultar la contraseña escrita
+document.addEventListener('click',e=>{const b=e.target.closest('.eye');if(!b)return;const i=document.getElementById(b.dataset.for);if(!i)return;const show=i.type==='password';i.type=show?'text':'password';b.textContent=show?'Ocultar':'Mostrar';b.setAttribute('aria-label',show?'Ocultar contraseña':'Mostrar contraseña');});
 function showLinkedDownloads(){
   if(location.hash==='#descargas') $('descargas').open=true;
 }
