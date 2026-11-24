@@ -2,14 +2,17 @@
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nueva contraseña · Bravo Melody Composer</title><link rel="icon" href="favicon.png"><link rel="stylesheet" href="legal.css">
 <style>input{width:100%;background:#0f0c0b;border:1px solid #3a312b;border-radius:10px;padding:12px 14px;color:#efe6d6;font:16px Inter,system-ui,sans-serif;margin:6px 0 14px}
-button{border:0;cursor:pointer;width:100%}.msg{margin-top:12px}.bad{color:#ff7b7b}.ok{color:#6fcf8a}</style></head>
+button{border:0;cursor:pointer;width:100%}.msg{margin-top:12px}.bad{color:#ff7b7b}.ok{color:#6fcf8a}
+.passwrap{position:relative;margin:6px 0 14px}.passwrap input{margin:0;padding-right:94px}
+.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:auto;background:none;color:#b9ab97;font:14px Inter,system-ui,sans-serif;padding:6px 8px;border-radius:6px}
+.eye:hover,.eye:focus-visible{color:#efe6d6;text-decoration:underline}</style></head>
 <body><div class="wrap" style="max-width:520px">
 <header><img src="logo.png" alt=""><a href="index.html">BRAVO MELODY COMPOSER</a></header>
 <h1>Nueva contraseña</h1>
 <div class="box">
   <form id="f">
-    <label for="p1">Nueva contraseña (mínimo 8 caracteres)</label><input id="p1" type="password" minlength="8" required autocomplete="new-password">
-    <label for="p2">Repítela</label><input id="p2" type="password" minlength="8" required autocomplete="new-password">
+    <label for="p1">Nueva contraseña (mínimo 8 caracteres)</label><div class="passwrap"><input id="p1" type="password" minlength="8" required autocomplete="new-password"><button type="button" class="eye" data-for="p1" aria-label="Mostrar contraseña">Mostrar</button></div>
+    <label for="p2">Repítela</label><div class="passwrap"><input id="p2" type="password" minlength="8" required autocomplete="new-password"><button type="button" class="eye" data-for="p2" aria-label="Mostrar contraseña">Mostrar</button></div>
     <button class="btn" id="b" type="submit">Guardar contraseña</button>
   </form>
   <div class="msg" id="m"></div>
@@ -19,6 +22,7 @@ button{border:0;cursor:pointer;width:100%}.msg{margin-top:12px}.bad{color:#ff7b7
 <script>
 const db=supabase.createClient('https://zlgkdobxvdfhdikbcyzr.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsZ2tkb2J4dmRmaGRpa2JjeXpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUwOTY4NDMsImV4cCI6MjExMDY3Mjg0M30.asIyI-s_jwAWGNH0KrLzHwNlC0y4a6gTNmFOwx95zSY',{auth:{persistSession:false,detectSessionInUrl:true}});
 const $=id=>document.getElementById(id);
+document.addEventListener('click',e=>{const b=e.target.closest('.eye');if(!b)return;const i=document.getElementById(b.dataset.for);if(!i)return;const show=i.type==='password';i.type=show?'text':'password';b.textContent=show?'Ocultar':'Mostrar';b.setAttribute('aria-label',show?'Ocultar contraseña':'Mostrar contraseña');});
 function say(t,bad){$('m').textContent=t;$('m').className='msg '+(bad?'bad':'ok')}
 const err=new URLSearchParams(location.hash.slice(1)).get('error_description');
 if(err)say('El enlace no sirve o ya caducó. Pide otro desde el plugin («¿Olvidaste tu contraseña?»).',true);
