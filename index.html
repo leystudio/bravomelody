@@ -499,7 +499,8 @@ $('buy').onsubmit=e=>{
   const base=location.href.split('#')[0].replace(/[^/]*$/,'');
   const q=new URLSearchParams({cmd:'_xclick',business:PAYPAL,item_name:'Bravo Melody Composer - licencia para siempre ('+email+')',item_number:'BMC-LIFETIME',
     amount:PRICE,currency_code:'USD',no_shipping:'1',no_note:'1',custom:email,charset:'utf-8',
-    return:base+'gracias.html',cancel_return:base+'#precio',rm:'1'});
+    return:base+'gracias.html',cancel_return:base+'#precio',rm:'1',
+    notify_url:'https://zlgkdobxvdfhdikbcyzr.supabase.co/functions/v1/bravo-pago'});
   location.href='https://www.paypal.com/cgi-bin/webscr?'+q.toString();
 };
 </script>
